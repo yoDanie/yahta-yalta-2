@@ -1,21 +1,48 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   --font-montserrat: var(--font-montserrat);
   --font-caveat: var(--font-caveat);
-  --color-lightblue2: oklch(0.6 0.083 256.3);
-  --color-lightblue: oklch(0.4 0.063 256.3);
-  --color-blue: oklch(0.3 0.053 256.3);
-  --color-darkblue: oklch(0.22 0.041 256.3);
-  --color-darkblue2: oklch(0.17 0.033 256.3);
-  --color-darkblue3: oklch(0.12 0.024 256.3);
-  --color-darkblue4: oklch(0.07 0.015 256.3);
-  --color-headerblue: oklch(0.15 0.03 256.6);
-  --color-sand: oklch(0.98 0.103 98.4);
-  --color-bronze: oklch(0.68 0.088 95.8);
+  --color-lightblue2: hsl(215, 50%, 60%);
+  --color-lightblue: hsl(215, 30%, 40%);
+  --color-blue: hsl(215, 30%, 30%);
+  --color-darkblue: hsl(215, 30%, 22%);
+  --color-darkblue2: hsl(215, 30%, 17%);
+  --color-darkblue3: hsl(215, 30%, 12%);
+  --color-darkblue4: hsl(215, 30%, 7%);
+  --color-headerblue: hsl(218, 31%, 15%);
+  --color-sand: hsl(53, 100%, 98%);
+  --color-bronze: hsl(44, 40%, 68%);
+
+  --color-accent-orange: hsl(25, 90%, 55%);
+  --color-accent-orange-hover: hsl(25, 100%, 65%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-darkblue-hover: hsl(215, 30%, 28%);
+
   --color-border: var(--border);
   --color-ring: var(--ring);
+
+  --animate-wave: wave 10s linear infinite;
+  --animate-wave-reverse: wave-reverse 10s linear infinite;
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes wave-reverse {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
 }
 
 @layer base {
@@ -23,6 +50,6 @@
     @apply border-border outline-ring/50;
   } */
   body {
-    @apply bg-darkblue text-white font-montserrat;
+    @apply bg-darkblue font-montserrat text-white;
   }
 }
