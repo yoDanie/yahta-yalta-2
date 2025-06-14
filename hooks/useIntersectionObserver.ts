@@ -1,9 +1,14 @@
-import { useEffect, useState } from 'react'
-import type { MutableRefObject } from 'react'
+import { useEffect, useState } from "react"
+import type { MutableRefObject } from "react"
 
 export function useIntersectionObserver(
   ref: MutableRefObject<Element | null>,
-  { threshold = 0, root = null, rootMargin = '0%', ...options }: IntersectionObserverInit = {},
+  {
+    threshold = 0,
+    root = null,
+    rootMargin = "0%",
+    ...options
+  }: IntersectionObserverInit = {},
 ): boolean {
   const [isIntersecting, setIsIntersecting] = useState(false)
 

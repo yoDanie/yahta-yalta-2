@@ -23,6 +23,7 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
 
+  --animate-fade: fade 0.5s ease-out forwards;
   --animate-wave: wave 10s linear infinite;
   --animate-wave-reverse: wave-reverse 10s linear infinite;
 
@@ -41,6 +42,15 @@
     }
     100% {
       transform: translateX(0%);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }

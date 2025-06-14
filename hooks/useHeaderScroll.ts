@@ -1,6 +1,6 @@
-import { useLayoutEffect, useRef, useState } from 'react'
-import { HEADER_HEIGHT } from '@/lib/constants'
-import { throttle } from '@/lib/utils'
+import { useLayoutEffect, useRef, useState } from "react"
+import { HEADER_HEIGHT } from "@/lib/constants"
+import { throttle } from "@/lib/utils"
 
 export const useHeaderScroll = () => {
   const prevScroll = useRef(0)
@@ -11,16 +11,16 @@ export const useHeaderScroll = () => {
     if (currScroll <= HEADER_HEIGHT) {
       setHeaderState(null)
     } else {
-      setHeaderState(prevScroll.current > currScroll ? 'visible' : 'hidden')
+      setHeaderState(prevScroll.current > currScroll ? "visible" : "hidden")
     }
     prevScroll.current = currScroll
   }
 
   useLayoutEffect(() => {
     const throttledScroll = throttle(handleScroll)
-    window.addEventListener('scroll', throttledScroll, { passive: true })
+    window.addEventListener("scroll", throttledScroll, { passive: true })
     return () => {
-      window.removeEventListener('scroll', throttledScroll)
+      window.removeEventListener("scroll", throttledScroll)
     }
   }, [])
 
