@@ -1,3 +1,5 @@
+import boatImages from "@/data/boatImages.json"
+
 declare global {
   type BoatData = {
     mainImage?: OGImage
@@ -14,6 +16,8 @@ declare global {
     width?: number
     description: string
   }
+
+  type BoatName = keyof typeof boatImages
 }
 
 export {}

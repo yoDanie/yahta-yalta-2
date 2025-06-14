@@ -14,7 +14,7 @@ export const withMaskitoRegister = (
     ...registerResult,
     ref,
     onInput: registerResult.onChange,
-    // @ts-ignore
+    // @ts-expect-error qwe
     onChange: undefined,
   }
 }

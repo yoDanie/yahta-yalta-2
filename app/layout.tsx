@@ -4,7 +4,8 @@ import { Caveat, Montserrat } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Header } from "@/components/header/Header"
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -51,6 +52,7 @@ export default function RootLayout({
         <Header />
         <ScrollArea className="relative flex h-dvh w-full flex-col">
           {children}
+          <Footer />
         </ScrollArea>
       </body>
     </html>

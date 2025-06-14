@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 
 @theme {
+  --header-height: 80px;
+
   --font-montserrat: var(--font-montserrat);
   --font-caveat: var(--font-caveat);
   --color-lightblue2: hsl(215, 50%, 60%);
@@ -11,8 +13,8 @@
   --color-darkblue2: hsl(215, 30%, 17%);
   --color-darkblue3: hsl(215, 30%, 12%);
   --color-darkblue4: hsl(215, 30%, 7%);
-  --color-headerblue: hsl(218, 31%, 15%);
   --color-sand: hsl(53, 100%, 98%);
+
   --color-bronze: hsl(44, 40%, 68%);
 
   --color-accent-orange: hsl(25, 90%, 55%);
@@ -61,5 +63,42 @@
   } */
   body {
     @apply bg-darkblue font-montserrat text-white;
+  }
+}
+
+@layer components {
+  .link {
+    @apply transition-opacity duration-200 hover:opacity-80;
+  }
+  .scale-animated {
+    @apply transition duration-200 hover:scale-125;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
+
+@layer utilities {
+  .bg-gradient1-3 {
+    background: linear-gradient(
+      to bottom,
+      var(--color-darkblue),
+      var(--color-darkblue3)
+    );
+  }
+
+  .rope {
+    position: relative;
+  }
+
+  .rope::after {
+    content: "";
+    height: 16px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: url(/icons/rope.png) center repeat-x;
   }
 }

@@ -1,13 +1,13 @@
-import SailIcon from 'icons/dark-sail-boat.svg'
-import PeopleIcon from 'icons/users.svg'
-import WalletIcon from 'icons/wallet2.svg'
+import SailIcon from "@/public/icons/dark-sail-boat.svg"
+import PeopleIcon from "@/public/icons/users.svg"
+import WalletIcon from "@/public/icons/wallet2.svg"
 
 export const HEADER_HEIGHT = 80
 
 export const boatTypeMapping = {
-  sailing: 'парусно-моторная',
-  motor: 'моторная',
-  catamaran: 'катамаран',
+  sailing: "парусно-моторная",
+  motor: "моторная",
+  catamaran: "катамаран",
 }
 
 export const boatIconMapping = {
@@ -16,6 +16,6 @@ export const boatIconMapping = {
   type: SailIcon,
 }
 
-export const dashChar = '—'
+export const dashChar = "—"
 
-export const baseURL = 'https://yahta-yalta.vercel.app'
+export const baseURL = "https://yahta-yalta.vercel.app"

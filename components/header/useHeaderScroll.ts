@@ -1,30 +1,37 @@
-'use client'
+import { useCallback, useEffect, useRef, useState } from "react"
+import { HEADER_HEIGHT } from "@/lib/constants"
+import { throttle } from "@/lib/utils"
 
-import { useEffect, useState } from 'react'
+const useHeaderScroll = () => {
+  const prevScroll = useRef(0)
+  const [headerState, setHeaderState] = useState<string | null>(null)
 
-type HeaderState = 'show' | 'hide'
-
-export default function useHeaderScroll() {
-  const [headerState, setHeaderState] = useState<HeaderState>('show')
-  const [prevScrollPos, setPrevScrollPos] = useState(0)
+  const handleScroll = useCallback(
+    throttle(() => {
+      const currScroll = window.scrollY
+      if (currScroll <= HEADER_HEIGHT) {
+        setHeaderState(null)
+      } else if (prevScroll.current > currScroll) {
+        setHeaderState("show")
+      } else if (prevScroll.current < currScroll) {
+        setHeaderState("hide")
+      }
+      prevScroll.current = currScroll
+    }),
+    [],
+  )
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY
-      const isScrollingDown = currentScrollPos > prevScrollPos
-
-      if (isScrollingDown && currentScrollPos > 80) {
-        setHeaderState('hide')
-      } else {
-        setHeaderState('show')
+    if (typeof window !== "undefined") {
+      prevScroll.current = window.scrollY
+      window.addEventListener("scroll", handleScroll, { passive: true })
+      return () => {
+        window.removeEventListener("scroll", handleScroll)
       }
-
-      setPrevScrollPos(currentScrollPos)
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [prevScrollPos])
+  }, [handleScroll])
 
   return headerState
-} 
+}
+
+export default useHeaderScroll
