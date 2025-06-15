@@ -54,7 +54,10 @@ export const BoatPage = async ({
           </div>
         </div>
         <div className="flex w-2/5 flex-col items-center gap-[80px] px-5 py-12">
-          <h1 className={styles.title}>{capitalize(slug)}</h1>
+          <h1 className={styles.title}>
+            {capitalize(slug)}
+            {/* <Sailboat /> */}
+          </h1>
           <BoatParameters {...data} />
         </div>
 

@@ -8,15 +8,15 @@ import styles from "./boat.module.scss"
 import { getBoatData } from "@/lib/getBoatData"
 import { BoatClauseMapping } from "@/components/BoatClauseMapping"
 import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
+import { BadgeRussianRuble, Ship, Users } from "lucide-react"
 
 type BoatProps = {
   boatName: BoatName
 }
-
 const boatIconMapping = {
-  capacity: <></>,
-  price: <></>,
-  type: <></>,
+  capacity: <Users className="text-darkblue3 size-5" />,
+  price: <BadgeRussianRuble className="text-darkblue3 size-5" />,
+  type: <Ship className="text-darkblue3 size-5" />,
 }
 
 export const Boat = ({ boatName }: BoatProps) => {
@@ -41,7 +41,7 @@ export const Boat = ({ boatName }: BoatProps) => {
 
   return (
     <Link href={`/boats/${name}`} className={cn(styles.root, "bg-sand")}>
-      <div className="bg-bronze absolute top-[1%] right-[-4%] z-20 rounded-[8px] px-5 py-2 text-[24px] font-medium text-black">
+      <div className="bg-bronze text-darkblue3 absolute top-[1%] right-[-4%] z-20 rounded-[8px] px-5 py-2 text-[24px] font-medium">
         {capitalize(slug)}
       </div>
 
