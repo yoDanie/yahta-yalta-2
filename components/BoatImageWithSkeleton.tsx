@@ -5,7 +5,13 @@ import { Image } from "@/components/Image"
 import { cn } from "@/lib/utils"
 import type { ImageProps as NextImageProps } from "next/image"
 
-export const BoatImageWithSkeleton = ({ src, alt, fill }: NextImageProps) => {
+export const BoatImageWithSkeleton = ({
+  src,
+  alt,
+  fill,
+  className,
+  ...props
+}: NextImageProps) => {
   const [loading, setLoading] = useState(true)
 
   return (
@@ -24,7 +30,9 @@ export const BoatImageWithSkeleton = ({ src, alt, fill }: NextImageProps) => {
         className={cn(
           "transition-opacity duration-500",
           loading && "opacity-0",
+          className,
         )}
+        {...props}
       />
     </>
   )

@@ -32,6 +32,7 @@ export const GalleryPage = () => {
 
   useEscapeKey(boatName)
 
+  const [mainSwiper, setMainSwiper] = useState<any>(null)
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null)
   const [thumbsSliderPerView, setThumbsSliderPerView] = useState(3)
 
@@ -75,7 +76,7 @@ export const GalleryPage = () => {
       {/* <Carousel images={images} /> */}
       <div className="h-4/5">
         <Swiper
-          loop={modEnabled}
+          loop
           navigation={modEnabled}
           initialSlide={Number(initialSlide)}
           className="h-full"
@@ -83,8 +84,9 @@ export const GalleryPage = () => {
           keyboard={modEnabled}
           slidesPerView={1}
           lazyPreloadPrevNext={2}
-          {...(thumbsSwiper && { thumbs: { swiper: thumbsSwiper } })}
+          onSwiper={setMainSwiper}
           modules={[Navigation, Controller, Thumbs, Keyboard, FreeMode]}
+          controller={{ control: thumbsSwiper }}
         >
           {images.map((src, index) => (
             <SwiperSlide key={src}>
@@ -105,14 +107,20 @@ export const GalleryPage = () => {
         <Swiper
           spaceBetween={10}
           slidesPerView={thumbsSliderPerView}
-          modules={[FreeMode, Navigation]}
+          modules={[FreeMode, Navigation, Controller, Thumbs]}
           onSwiper={setThumbsSwiper}
           freeMode
           watchSlidesProgress
           className="h-full"
+          controller={{ control: mainSwiper }}
         >
-          {images.map((src) => (
-            <SwiperSlide key={src}>
+          {images.map((src, index) => (
+            <SwiperSlide
+              key={src}
+              onClick={() => {
+                mainSwiper.slideTo(index)
+              }}
+            >
               <BoatImageWithSkeleton
                 fill
                 src={src}
