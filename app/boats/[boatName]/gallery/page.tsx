@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import CloseIcon from "@/public/icons/cross.svg"
 import {
   Controller,
   FreeMode,
@@ -9,13 +8,15 @@ import {
   Thumbs,
 } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Image } from "@/components/Image"
 
 import styles from "./gallery.module.scss"
 import { useEscapeKey } from "./useEscapeKey"
 import Link from "next/link"
 import { useParams, useSearchParams } from "next/navigation"
 import { getBoatData } from "@/lib/getBoatData"
+import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
+import { Minimize } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 const modEnabled = {
   enabled: true,
@@ -64,26 +65,30 @@ export const GalleryPage = () => {
 
   return (
     <div className={styles.root}>
-      <Link href={`/boats/${data?.name}`} className={styles.close}>
-        <Image placeholder="empty" src={CloseIcon} alt="закрыть" />
+      <Link
+        href={`/boats/${data?.name}`}
+        className="link absolute top-[20px] right-[10px] z-20"
+      >
+        <Minimize className={cn("size-12 text-cyan-400", styles.close)} />
       </Link>
 
       {/* <Carousel images={images} /> */}
       <div className="h-4/5">
         <Swiper
-          loop
-          navigation
+          loop={modEnabled}
+          navigation={modEnabled}
           initialSlide={Number(initialSlide)}
           className="h-full"
           scrollbar={modEnabled}
           keyboard={modEnabled}
           slidesPerView={1}
+          lazyPreloadPrevNext={2}
           {...(thumbsSwiper && { thumbs: { swiper: thumbsSwiper } })}
           modules={[Navigation, Controller, Thumbs, Keyboard, FreeMode]}
         >
           {images.map((src, index) => (
             <SwiperSlide key={src}>
-              <Image
+              <BoatImageWithSkeleton
                 priority
                 className={styles.img}
                 key={index}
@@ -108,7 +113,11 @@ export const GalleryPage = () => {
         >
           {images.map((src) => (
             <SwiperSlide key={src}>
-              <Image fill src={src} alt={`Фото-миниатюра ${data?.slug}`} />
+              <BoatImageWithSkeleton
+                fill
+                src={src}
+                alt={`Фото-миниатюра ${data?.slug}`}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

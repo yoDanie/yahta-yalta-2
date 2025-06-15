@@ -1,6 +1,6 @@
 "use client"
 import { useRef } from "react"
-import anchorImage from "@/public/icons/sea-anchor.png"
+import anchorImage from "./sea-anchor.png"
 import { Image } from "@/components/Image"
 
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver"
@@ -10,7 +10,6 @@ import bgImage from "./intro-1.jpg"
 import { RopeDivider } from "@/components/RopeDivider"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-// import { Button } from "@/components/ui/button"
 
 export const Intro = () => {
   const bottomElementRef = useRef(null)

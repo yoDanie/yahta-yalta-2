@@ -1,4 +1,4 @@
-import { boatIconMapping, boatTypeMapping } from "@/lib/constants"
+import { boatTypeMapping } from "@/lib/constants"
 import Link from "next/link"
 // import { Image } from "@/components/Image"
 
@@ -11,6 +11,12 @@ import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
 
 type BoatProps = {
   boatName: BoatName
+}
+
+const boatIconMapping = {
+  capacity: <></>,
+  price: <></>,
+  type: <></>,
 }
 
 export const Boat = ({ boatName }: BoatProps) => {
@@ -40,7 +46,7 @@ export const Boat = ({ boatName }: BoatProps) => {
       </div>
 
       <div className="relative h-[70%]">
-        <BoatImageWithSkeleton loading="lazy" src={mainImage} fill alt={name} />
+        <BoatImageWithSkeleton src={mainImage} fill alt={name} />
       </div>
 
       <BoatClauseMapping clauseMapping={clauseMapping} />

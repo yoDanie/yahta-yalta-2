@@ -1,27 +1,36 @@
-import cn from 'classnames'
+import cn from "classnames"
 
-import styles from './index.module.scss'
+import styles from "./index.module.scss"
 
 type BoatClauseMappingProps = {
-  clauseMapping: Record<string, string | number | null | undefined>[]
+  clauseMapping: Record<string, React.ReactNode>[]
   className?: string
-  theme?: 'light' | 'dark'
+  theme?: "light" | "dark"
 }
 
 export const BoatClauseMapping = ({
   clauseMapping,
   className,
-  theme = 'light',
+  theme = "light",
 }: BoatClauseMappingProps) => {
-  const isLightTheme = theme === 'light'
+  const isLightTheme = theme === "light"
   return (
     <div className={cn(styles.root, className)}>
       {clauseMapping.map(
         ({ key, value }, index) =>
           value && (
-            <div key={index} className={cn(styles.clause, !isLightTheme && styles.clauseDark)}>
-              <div className={isLightTheme ? styles.keyLight : styles.keyDark}>{key}</div>
-              <div className={isLightTheme ? styles.valueLight : styles.valueDark}>{value}</div>
+            <div
+              key={index}
+              className={cn(styles.clause, !isLightTheme && styles.clauseDark)}
+            >
+              <div className={isLightTheme ? styles.keyLight : styles.keyDark}>
+                {key}
+              </div>
+              <div
+                className={isLightTheme ? styles.valueLight : styles.valueDark}
+              >
+                {value}
+              </div>
             </div>
           ),
       )}
