@@ -1,6 +1,5 @@
 "use client"
 import { useState } from "react"
-import cn from "classnames"
 import logo from "@/public/icons/yahta-logo.svg"
 import { Image } from "@/components/Image"
 
@@ -10,6 +9,7 @@ import { MessengersBtn } from "./MessengersBtn"
 import { NavMenu } from "./NavMenu"
 import useHeaderScroll from "./useHeaderScroll"
 import { Link } from "@/components/Link"
+import { cn } from "@/lib/utils"
 
 export const Header = () => {
   const [isBurgerOpened, setBurgerOpened] = useState(false)
@@ -23,12 +23,14 @@ export const Header = () => {
     setMessengersOpened((state) => !state)
   }
 
+  // не работает, т.к у нас обернуто в ScrollArea
   const headerState = useHeaderScroll()
 
   return (
     <header
       className={cn(
         styles.root,
+        "bg-gradient-1-3",
         headerState === "hide" && styles.hide,
         (headerState === "show" || isBurgerOpened || isMessengersOpened) &&
           styles.show,
@@ -51,17 +53,20 @@ export const Header = () => {
         }
       />
 
-      <div className={styles.info}>
-        <div className={styles.wrapper}>
-          <Link href="/" className={styles.title}>
+      <div className="flex items-center gap-3 text-right">
+        <div className="flex flex-col gap-2">
+          <Link
+            href="/"
+            className="font-caveat text-xl font-semibold uppercase"
+          >
             Яхта-ялта
           </Link>
-          <div className={styles.subtitle}>Аренда яхт и катеров в Ялте</div>
+          <div className="text-sm font-light">Аренда яхт и катеров в Ялте</div>
         </div>
         <Link href="/">
           <Image
             placeholder="empty"
-            className={styles.logo}
+            className="size-10 sm:size-14"
             src={logo}
             alt="лого яхта-ялта"
           />

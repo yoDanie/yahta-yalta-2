@@ -1,0 +1,21 @@
+.root {
+  position: relative;
+  height: calc(100dvh - 80px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.img {
+  object-fit: contain;
+}

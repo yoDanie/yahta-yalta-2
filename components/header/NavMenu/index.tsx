@@ -1,8 +1,8 @@
-import cn from "classnames"
 import type { ReactNode } from "react"
 
 import styles from "./index.module.scss"
 import { Link } from "@/components/Link"
+import { cn } from "@/lib/utils"
 
 type NavProps = {
   isOpened: boolean

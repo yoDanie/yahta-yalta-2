@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "tailwindcss-motion";
 
 @theme {
   --header-height: 80px;
@@ -68,7 +69,10 @@
 
 @layer components {
   .link {
-    @apply transition-opacity duration-200 hover:opacity-80;
+    @apply cursor-pointer transition-opacity duration-200 hover:opacity-80;
+  }
+  .scale-animated-xs {
+    @apply transition duration-200 hover:scale-105;
   }
   .scale-animated {
     @apply transition duration-200 hover:scale-125;
@@ -79,7 +83,7 @@
 }
 
 @layer utilities {
-  .bg-gradient1-3 {
+  .bg-gradient-1-3 {
     background: linear-gradient(
       to bottom,
       var(--color-darkblue),
@@ -87,18 +91,19 @@
     );
   }
 
-  .rope {
-    position: relative;
+  .bg-gradient-2-3 {
+    background: linear-gradient(
+      to bottom,
+      var(--color-darkblue2),
+      var(--color-darkblue3)
+    );
   }
 
-  .rope::after {
-    content: "";
-    height: 16px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    background: url(/icons/rope.png) center repeat-x;
+  .bg-gradient-1-lightblue {
+    background: linear-gradient(
+      to bottom,
+      var(--color-darkblue),
+      var(--color-lightblue)
+    );
   }
 }

@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   gap: 22px;
-  background: inherit;
 
   @media (max-width: 990px) {
     position: absolute;
@@ -14,12 +13,12 @@
     border-radius: 10px 0 0 10px;
     gap: 0;
     flex-direction: column;
-    transform: translate(100%, var(--header-height));
-    // @include bg-gradient1-3;
+    transform: translate(100%, 80px);
     transition: transform 0.2s ease-in;
+    background-color: var(--color-darkblue2);
 
     &.opened {
-      transform: translate(-2%, var(--header-height));
+      transform: translate(-2%, 80px);
     }
 
     .menuItem {
@@ -44,6 +43,8 @@
   position: relative;
   padding: 10px 5px;
   transition: all 0.2s linear;
+  font-weight: 500;
+  font-size: 20px;
 
   &::after {
     content: "";

@@ -2,10 +2,11 @@ import type { Metadata } from "next"
 import { Caveat, Montserrat } from "next/font/google"
 
 import "./globals.css"
+import "./swiper.scss"
 import { cn } from "@/lib/utils"
-import { ScrollArea } from "@/components/ui/scroll-area"
+// import { ScrollArea } from "@/components/ui/scroll-area"
 import { Header } from "@/components/Header"
-import { Footer } from "@/components/Footer"
+import { Footer } from "@/components/Footer/Footer"
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -49,11 +50,13 @@ export default function RootLayout({
           "flex min-h-screen flex-col antialiased",
         )}
       >
+        {/* <ScrollArea className="relative flex h-dvh w-full flex-col"> */}
         <Header />
-        <ScrollArea className="relative flex h-dvh w-full flex-col">
+        <main className="min-h-[calc(100dvh - 80px)] relative flex flex-col overflow-hidden pt-[80px]">
           {children}
-          <Footer />
-        </ScrollArea>
+        </main>
+        <Footer />
+        {/* </ScrollArea> */}
       </body>
     </html>
   )

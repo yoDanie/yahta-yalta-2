@@ -1,4 +1,3 @@
-import { useState } from "react"
 import cn from "classnames"
 
 import { Contacts } from "@/components/Contacts"
@@ -17,17 +16,15 @@ export const MessengersBtn = ({
   toggleOpened,
   onClose,
 }: MessengersBtnProps) => {
-  const [ref, setRef] = useState<HTMLElement | null>(null)
-
-  useOnClickOutside({ ref, onClose })
+  const { setElRef } = useOnClickOutside({ onClose })
 
   return (
-    <div className={styles.root} ref={setRef}>
+    <div className={styles.root} ref={setElRef}>
       <button onClick={toggleOpened} className={styles.btn} type="button" />
       <div
         className={cn(
           styles.messengers,
-          "bg-gradient1-3",
+          "bg-gradient-1-3",
           isOpened && styles.active,
         )}
       >

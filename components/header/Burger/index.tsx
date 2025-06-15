@@ -1,4 +1,3 @@
-import { useState } from "react"
 import cn from "classnames"
 
 import { useOnClickOutside } from "@/hooks/useOnClickOutside"
@@ -12,15 +11,13 @@ type BurgerProps = {
 }
 
 export const Burger = ({ isOpened, toggleOpened, onClose }: BurgerProps) => {
-  const [burgerRef, setBurgerRef] = useState<HTMLButtonElement | null>(null)
-
-  useOnClickOutside({ ref: burgerRef, onClose })
+  const { setElRef } = useOnClickOutside({ onClose })
 
   return (
     <button
       className={cn(styles.root, isOpened && styles.opened)}
       onClick={toggleOpened}
-      ref={setBurgerRef}
+      ref={setElRef}
     >
       <div className={cn(styles.item)} />
       <div className={cn(styles.item)} />

@@ -2,12 +2,14 @@ import type { CSSProperties, ReactNode } from "react"
 
 import styles from "./index.module.scss"
 import { cn } from "@/lib/utils"
+import { RopeDivider } from "../RopeDivider"
 
 type SectionProps = {
   title: ReactNode
   children: ReactNode
   className?: string
   style?: CSSProperties
+  bottomRopeDivider?: boolean
   theme?: "light" | "blue"
 }
 
@@ -16,13 +18,14 @@ export const Section = ({
   children,
   className,
   style,
+  bottomRopeDivider = true,
   theme = "blue",
 }: SectionProps) => (
   <section
     className={cn(
       styles.root,
       theme === "blue" && styles.blueSection,
-      "rope",
+      "relative",
       className,
     )}
     style={style}
@@ -31,5 +34,6 @@ export const Section = ({
       {title}
     </h3>
     {children}
+    {bottomRopeDivider && <RopeDivider />}
   </section>
 )

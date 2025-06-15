@@ -1,4 +1,5 @@
 .root {
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -7,11 +8,6 @@
   padding: 20px;
   gap: 30px;
   background-color: var(--color-darkblue4);
-}
-
-.rights {
-  font-size: 14px;
-  font-weight: 300;
 }
 
 .logo {

@@ -1,24 +1,27 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from "react"
 
 type useOnClickOutsideParams = {
-  ref: HTMLElement | null
   onClose: () => void
 }
 
-export const useOnClickOutside = ({ ref, onClose }: useOnClickOutsideParams) => {
+export const useOnClickOutside = ({ onClose }: useOnClickOutsideParams) => {
+  const [elRef, setElRef] = useState<HTMLElement | null>(null)
+
   useEffect(() => {
     const listener = (event: any) => {
-      if (!ref?.contains(event.target)) {
+      if (!elRef?.contains(event.target)) {
         onClose()
       }
     }
 
-    document.addEventListener('mousedown', listener)
-    document.addEventListener('touchstart', listener)
+    document.addEventListener("mousedown", listener)
+    document.addEventListener("touchstart", listener)
 
     return () => {
-      document.removeEventListener('mousedown', listener)
-      document.removeEventListener('touchstart', listener)
+      document.removeEventListener("mousedown", listener)
+      document.removeEventListener("touchstart", listener)
     }
-  }, [ref, onClose])
+  }, [elRef, onClose])
+
+  return { setElRef }
 }

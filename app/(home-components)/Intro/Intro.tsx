@@ -1,13 +1,15 @@
 "use client"
 import { useRef } from "react"
-import cn from "classnames"
 import anchorImage from "@/public/icons/sea-anchor.png"
 import { Image } from "@/components/Image"
 
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver"
 
-import styles from "./index.module.scss"
+import styles from "./intro.module.scss"
 import bgImage from "./intro-1.jpg"
+import { RopeDivider } from "@/components/RopeDivider"
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 // import { Button } from "@/components/ui/button"
 
 export const Intro = () => {
@@ -19,7 +21,9 @@ export const Intro = () => {
 
   return (
     <>
-      <div className={cn(styles.root, "rope")}>
+      <div className={styles.root}>
+        <RopeDivider />
+
         <Image
           priority
           src={bgImage}
@@ -50,7 +54,7 @@ export const Intro = () => {
               морскую прогулку к замку Ласточкино гнездо, скалам Адалары,
               Медведь-горе, скале Дива...
             </h3>
-            {/* <Button>Подобрать яхту</Button> */}
+            <Button>Подобрать яхту</Button>
           </div>
         </div>
       </div>

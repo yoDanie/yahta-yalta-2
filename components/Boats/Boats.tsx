@@ -1,7 +1,7 @@
 import { orderedBoatsData } from "@/data"
 
-import { Boat } from "./Boat"
-import styles from "./index.module.scss"
+import { Boat } from "./Boat/Boat"
+import styles from "./boats.module.scss"
 import { Section } from "../Section"
 
 type BoatsProps = {

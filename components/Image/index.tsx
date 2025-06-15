@@ -1,8 +1,8 @@
-import cn from "classnames"
 import NextImage from "next/image"
 import type { ImageProps as NextImageProps } from "next/image"
 
 import styles from "./index.module.scss"
+import { cn } from "@/lib/utils"
 
 type ImageProps = {
   className?: string
@@ -15,13 +15,7 @@ export const Image = ({
   ...otherProps
 }: ImageProps) => {
   const image = (
-    <NextImage
-      blurDataURL={
-        typeof otherProps.src === "string" ? otherProps.src : undefined
-      }
-      className={cn(styles.root, className)}
-      {...otherProps}
-    />
+    <NextImage className={cn(styles.root, className)} {...otherProps} />
   )
 
   return containerClassname ? (

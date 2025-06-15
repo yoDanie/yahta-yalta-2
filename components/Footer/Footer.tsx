@@ -3,15 +3,17 @@ import logo from "@/public/icons/yahta-logo.svg"
 
 import { Image } from "@/components/Image"
 
-import styles from "./index.module.scss"
+import styles from "./footer.module.scss"
 import { cn } from "@/lib/utils"
 
 export const Footer = () => {
   return (
-    <footer className={styles.root}>
-      <div className={styles.rights}>
+    <footer className={cn(styles.root, "bg-gradient-1-3")}>
+      {/* <RopeDivider placement="top" /> */}
+      <span className="font-light">
         Яхта-Ялта (c) 2021-{new Date().getFullYear()} Все права защищены.
-      </div>
+      </span>
+
       <div>
         Разработка сайта:
         <a
@@ -23,14 +25,13 @@ export const Footer = () => {
         </a>
       </div>
 
-      <div className={styles.logo} onClick={() => window.scrollTo(0, 0)}>
-        <Image
-          className="link"
-          placeholder="empty"
-          src={logo}
-          alt="лого яхта-ялта"
-        />
-      </div>
+      <Image
+        onClick={() => window.scrollTo(0, 0)}
+        className="link size-14"
+        placeholder="empty"
+        src={logo}
+        alt="лого яхта-ялта"
+      />
     </footer>
   )
 }

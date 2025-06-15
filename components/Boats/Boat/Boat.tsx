@@ -1,21 +1,23 @@
 import { boatIconMapping, boatTypeMapping } from "@/lib/constants"
 import Link from "next/link"
-import { Image } from "@/components/Image"
+// import { Image } from "@/components/Image"
 
 import { capitalize, cn, formatPrice } from "@/lib/utils"
 
-import styles from "./index.module.scss"
+import styles from "./boat.module.scss"
 import { getBoatData } from "@/lib/getBoatData"
 import { BoatClauseMapping } from "@/components/BoatClauseMapping"
+import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
 
 type BoatProps = {
   boatName: BoatName
 }
 
 export const Boat = ({ boatName }: BoatProps) => {
-  const { data, mainImage } = getBoatData(boatName)
-
-  const { name, capacity, slug, type, price } = data
+  const {
+    data: { name, capacity, slug, type, price },
+    mainImage,
+  } = getBoatData(boatName)
 
   const clauseMapping = [
     { key: "Тип", value: boatTypeMapping[type], icon: boatIconMapping.type },
@@ -32,18 +34,14 @@ export const Boat = ({ boatName }: BoatProps) => {
   ]
 
   return (
-    <Link href={`/boat/${name}`} className={cn(styles.root, "bg-sand")}>
-      <div className="bg-bronze absolute top-[1%] right-[-4%] z-10 rounded-[8px] px-5 py-2 text-[24px] font-medium text-black">
+    <Link href={`/boats/${name}`} className={cn(styles.root, "bg-sand")}>
+      <div className="bg-bronze absolute top-[1%] right-[-4%] z-20 rounded-[8px] px-5 py-2 text-[24px] font-medium text-black">
         {capitalize(slug)}
       </div>
 
-      <Image
-        containerClassname={styles.photo}
-        loading="lazy"
-        src={mainImage}
-        fill
-        alt={name}
-      />
+      <div className="relative h-[70%]">
+        <BoatImageWithSkeleton loading="lazy" src={mainImage} fill alt={name} />
+      </div>
 
       <BoatClauseMapping clauseMapping={clauseMapping} />
     </Link>

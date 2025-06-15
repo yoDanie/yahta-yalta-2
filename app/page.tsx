@@ -1,17 +1,15 @@
-import { Boats } from "@/components/Boats"
-import { Cards } from "./(home-components)/Cards"
+import { Boats } from "@/components/Boats/Boats"
+import { Cards } from "./(home-components)/Cards/Cards"
 import { Intro } from "./(home-components)/Intro/Intro"
+import { Reviews } from "./(home-components)/Reviews/Reviews"
 
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <>
       <Intro />
       <Cards />
       <Boats />
-      {/* <Section title="Контакты">
-        <Contacts />
-      </Section> */}
-      {/* <Reviews /> */}
-    </main>
+      <Reviews />
+    </>
   )
 }
