@@ -9,11 +9,59 @@ import { Boats } from "@/components/Boats/Boats"
 import { RopeDivider } from "@/components/RopeDivider"
 import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
 
-export const BoatPage = async ({
+import type { Metadata } from "next"
+import { boatTypeMapping, dashChar } from "@/lib/constants"
+
+type Params = Promise<{ boatName: string }>
+
+const keywordsMapping = {
+  sailing: "парусная яхта в ялте, парусник ялта, прогулка под парусом,",
+  motor: "моторная яхта в ялте, рыбалка с катера",
+  catamaran: "катамаран ялта, яхта-катамаран",
+}
+
+export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ boatName: string }>
-}) => {
+  params: Params
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}): Promise<Metadata> {
+  const { boatName } = await params
+  const {
+    data: { slug, type, name },
+    mainImage,
+  } = getBoatData(boatName as BoatName)
+
+  const textAddition = type === "catamaran" ? "" : "яхта"
+
+  const titleMainPart = `${capitalize(slug)} ${dashChar} ${boatTypeMapping[type]} ${textAddition}`
+
+  const description = `${capitalize(boatTypeMapping[type])} ${textAddition} "${capitalize(
+    slug,
+  )}". Забронировать +7 978-1000-171 | Скидки на аренду светового дня и суток | ${
+    type === "sailing"
+      ? "Романтическая прогулка под парусом"
+      : "Рыбалка на яхте"
+  }`
+
+  const keywords = `яхта ${slug}, яхта
+  ${slug} ялта, яхта ${name}, яхта ${name} ялта, ${keywordsMapping[type]}, рыбалка на яхте, морская прогулка, аренды яхты, заказать яхту, снять яхту, прогулки на яхте, прогулки на катере, морская прогулка ялта, морские прогулки, ялта, яхта, катер, аренда, морское путешествие, экскурсия, рыбалка, прогулка на яхте, снять яхту, аренда яхты с капитаном, аренда, заказать яхту, морская экскурсия ласточкино гнездо, ласточка, гнездо, гнездышко, гурзуф яхта, медведь гора яхта`
+
+  return {
+    title: `${titleMainPart}. Аренда и морская прогулка на ${capitalize(name)} в Ялте`,
+    description,
+    keywords,
+    openGraph: {
+      // url: baseURL
+      images: mainImage,
+      type: "website",
+      description,
+      title: `${titleMainPart}. Аренда яхты, морская прогулка в Ялте`,
+    },
+  }
+}
+
+export const BoatPage = async ({ params }: { params: Params }) => {
   const { boatName } = await params
 
   const { data, images, mainImage } = getBoatData(boatName as BoatName)
