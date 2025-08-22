@@ -39,4 +39,13 @@
     gap: 50px;
     padding: 40px 20px 60px;
   }
+  .title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 770px) {
+  .title {
+    font-size: 30px;
+  }
 }

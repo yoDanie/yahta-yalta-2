@@ -46,7 +46,11 @@ export const Cards = () => (
       />
     </div>
     <div className={styles.callToAction}>
-      <Image className={styles.polaroid} src={polaroidImage} alt="polaroid" />
+      <div className={styles.polaroid}>
+        <div className={styles.photo}>
+          <span className={styles.question}>?</span>
+        </div>
+      </div>
       <div className={styles.wrapper}>
         <span className={styles.text}>
           Забронируйте морскую прогулку вдоль берега Ялты и добавьте яркие фото
