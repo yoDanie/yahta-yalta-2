@@ -45,8 +45,16 @@ export const Boat = ({ boatName }: BoatProps) => {
         {capitalize(slug)}
       </div>
 
-      <div className="relative h-[70%]">
-        <BoatImageWithSkeleton src={mainImage} fill alt={name} />
+      <div className="relative h-[70%] w-full">
+        <BoatImageWithSkeleton
+          src={mainImage}
+          fill
+          alt={name}
+          sizes="(max-width: 770px) 100vw,
+         (max-width: 1180px) 50vw,
+         (max-width: 1450px) 33vw,
+         25vw"
+        />
       </div>
 
       <BoatClauseMapping clauseMapping={clauseMapping} />

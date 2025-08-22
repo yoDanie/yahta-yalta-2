@@ -83,6 +83,7 @@ const BoatPage = async ({ params }: { params: Params }) => {
               src={mainImage}
               alt={`Заглавное фото яхты ${slug}`}
               fill
+              priority
             />
           </Link>
           <div className="flex h-1/4 w-full gap-3">
