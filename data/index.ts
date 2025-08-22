@@ -42,7 +42,7 @@ export const orderedBoatsData: BoatData[] = [
   nikole,
   omega,
   faraon,
-  raffaela,
+  // raffaela,
   raskat,
   saintMary,
   snafu,
