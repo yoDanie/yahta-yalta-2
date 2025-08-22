@@ -20,6 +20,7 @@ import { ControllerProps, useController, useFormContext } from "react-hook-form"
 import { ErrorMessageWrapper } from "./ErrorMessageWrapper"
 import { Spinner } from "@/components/ui/spinner" // Assuming you have a Spinner component
 import { cn } from "@/lib/utils"
+import { ScrollArea } from "./scroll-area"
 
 type ComboboxProps = {
   disabled?: boolean
@@ -143,37 +144,38 @@ export function Combobox({
       <PopoverContent
         align="start"
         className="bg-gradient-1-3 z-50 w-[340px] p-0"
+        onWheel={(e) => e.stopPropagation()}
       >
         <Command filter={customFilter}>
-          {/* <CommandInput placeholder={inputPlaceholder} disabled={isLoading} /> */}
-          <CommandList>
-            {isLoading ? (
-              <div className="flex items-center justify-center p-4">
-                <Spinner size="s" />
-              </div>
-            ) : (
-              <>
-                <CommandEmpty>Ничего не найдено</CommandEmpty>
-                <CommandGroup>
-                  {options.map((option) => (
-                    <CommandItem
-                      className="justify-between"
-                      key={option.value}
-                      value={option.value}
-                      onSelect={() => handleSelect(option.value)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <div>{option.icon}</div>
-                        {option.label}
-                      </div>
-
-                      {value === option.value && <Check className="size-4" />}
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </>
-            )}
-          </CommandList>
+          <ScrollArea className="h-[300px]">
+            <CommandList>
+              {isLoading ? (
+                <div className="flex items-center justify-center p-4">
+                  <Spinner size="s" />
+                </div>
+              ) : (
+                <>
+                  <CommandEmpty>Ничего не найдено</CommandEmpty>
+                  <CommandGroup>
+                    {options.map((option) => (
+                      <CommandItem
+                        className="justify-between"
+                        key={option.value}
+                        value={option.value}
+                        onSelect={() => handleSelect(option.value)}
+                      >
+                        <div className="flex items-center gap-2">
+                          <div>{option.icon}</div>
+                          {option.label}
+                        </div>
+                        {value === option.value && <Check className="size-4" />}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </>
+              )}
+            </CommandList>
+          </ScrollArea>
         </Command>
       </PopoverContent>
     </Popover>
