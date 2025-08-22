@@ -1,15 +1,16 @@
 "use client"
+import { Input } from "@/components/ControlledInputs/input"
 import { Image } from "@/components/Image"
 import { Button } from "@/components/ui/button"
 import { DialogClose, DialogFooter } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { orderedBoatsData } from "@/data"
-import { capitalize } from "@/lib/utils"
+import { capitalize, pluralize } from "@/lib/utils"
 import telegram from "@/public/icons/telegram.svg"
 import whatsapp from "@/public/icons/whatsapp.svg"
 import { FormProvider, useForm } from "react-hook-form"
 import { Combobox } from "../ui/combobox"
+import { ru } from "date-fns/locale"
 
 import {
   Tooltip,
@@ -17,18 +18,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { CircleQuestionMark } from "lucide-react"
-import { Slider } from "../ui/slider"
-import { ButtonLink } from "../ui/button-link"
 import { TELEGRAM_BASE, WHATSAPP_BASE } from "../Contacts"
+import { ControlledNumberInput } from "../ControlledInputs/ControlledNumberInput"
+import { ButtonLink } from "../ui/button-link"
+import { Slider } from "../ui/slider"
 
-function pluralizeHours(n: number) {
-  const mod10 = n % 10
-  const mod100 = n % 100
-
-  if (mod10 === 1 && mod100 !== 11) return "час"
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 10 || mod100 >= 20)) return "часа"
-  return "часов"
-}
+import { ControlledCalendar } from "../ControlledInputs/ControlledCalendar"
+import { formatDate } from "date-fns"
 
 const messengerOptions = [
   {
@@ -69,39 +65,62 @@ const boatOptions = orderedBoatsData.map(({ slug }) => {
 const chooseForMeVariant = "помочь с подбором"
 boatOptions.unshift({ label: chooseForMeVariant, value: chooseForMeVariant })
 
+const allPrices = orderedBoatsData.map((b) => b.price)
+const minBoatPrice = Math.min(...allPrices)
+const maxBoatPrice = Math.max(...allPrices)
+
+const defaultValues = {
+  messenger: "telegram",
+  selectedBoat: chooseForMeVariant,
+  duration: [2, 5],
+  people: 2,
+  price: [minBoatPrice, maxBoatPrice],
+  date: null,
+  time: "09:00",
+}
+
 export const BookingForm = () => {
   const methods = useForm({
-    defaultValues: {
-      messenger: "whatsapp",
-      selectedBoat: chooseForMeVariant,
-      duration: [2, 5],
-      people: 2,
-    },
+    defaultValues,
   })
 
-  const { messenger, duration, selectedBoat } = methods.watch()
-  const [minDuration, maxDuration] = duration
+  const {
+    watch,
+    formState: { isValid },
+  } = methods
+
+  const { messenger, duration, selectedBoat, price, people, date, time } =
+    watch()
+  const [minSelectedDuration, maxSelectedDuration] = duration
+  const [minSelectedPrice, maxSelectedPrice] = price
 
   let durationText = ""
-  if (minDuration === maxDuration) {
-    durationText = `${minDuration} ${pluralizeHours(minDuration)}`
+  if (minSelectedDuration === maxSelectedDuration) {
+    durationText = `${minSelectedDuration} ${pluralize(minSelectedDuration, "hours")}`
   } else {
-    durationText = `от ${minDuration} до ${maxDuration} ${pluralizeHours(maxDuration)}`
+    durationText = `от ${minSelectedDuration} до ${maxSelectedDuration} ${pluralize(maxSelectedDuration, "hours")}`
+  }
+
+  let priceText = ""
+  if (minSelectedPrice === maxSelectedPrice) {
+    priceText = `${minSelectedPrice.toLocaleString("ru-RU")} ₽ в час`
+  } else {
+    priceText = `от ${minSelectedPrice.toLocaleString("ru-RU")} до ${maxSelectedPrice.toLocaleString("ru-RU")} ₽ в час`
   }
 
   const orderDetails = encodeURIComponent(
-    `Здравствуйте! Желаю забронировать яхту:
-• Яхта - ${selectedBoat && selectedBoat !== chooseForMeVariant ? selectedBoat : "помогите подобрать"}
-• Длительность прогулки - ${durationText}`,
+    `Здравствуйте! Желаю забронировать яхту.
+• ${selectedBoat === chooseForMeVariant ? `Нужно подобрать яхту по цене ${priceText}` : `Выбрали яхту «${selectedBoat}»`}
+• Нас будет ${people} ${pluralize(people, "people")}
+• Длительность прогулки - ${durationText}
+• Начало прогулки - ${
+      date &&
+      formatDate(date, "d MMMM", {
+        locale: ru,
+      })
+    } в ${time}
+`,
   )
-  //   const orderDetails = encodeURIComponent(
-  //     `Здравствуйте! Хочу арендовать яхту:
-  // - Яхта: ${selectedBoat}
-  // - Людей: ${people}
-  // - Время: ${durationText}
-  // - Бюджет: ${budget}
-  // - Дата: ${date}`,
-  //   )
 
   const submitHref = `${messenger === "telegram" ? TELEGRAM_BASE : WHATSAPP_BASE}?text=${orderDetails}`
 
@@ -128,17 +147,27 @@ export const BookingForm = () => {
             />
           </div>
 
-          <div className="grid gap-3">
-            <Label htmlFor="people">Количество пассажиров</Label>
-            <Input name="people" type="number" rules={{ max: 10 }} />
-          </div>
+          {selectedBoat === chooseForMeVariant && (
+            <div className="grid gap-3">
+              <Label htmlFor="price">Цена в час</Label>
+              <div className="flex flex-col items-center gap-1">
+                <div>{priceText}</div>
+                <Slider
+                  name="price"
+                  min={minBoatPrice}
+                  max={maxBoatPrice}
+                  step={1000}
+                />
+              </div>
+            </div>
+          )}
 
           <div className="grid gap-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <Label htmlFor="duration">Длительность прогулки</Label>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <CircleQuestionMark />
+                  <CircleQuestionMark className="size-5" />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Минимальная длительность прогулки - 2 часа</p>
@@ -151,19 +180,59 @@ export const BookingForm = () => {
             </div>
           </div>
 
-          {/* <div className="grid gap-3">
-            <Label htmlFor="phone-1">Телефон</Label>
-            <Input id="phone-1" name="phone" placeholder="+7 ..." />
-          </div> */}
+          <div className="grid gap-3">
+            <div className="flex items-center gap-2">
+              <Label htmlFor="people">Количество пассажиров</Label>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <CircleQuestionMark className="size-5" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Максимум 10 пассажиров</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            <ControlledNumberInput
+              name="people"
+              className="w-[100px]"
+              min={1}
+              max={10}
+            />
+          </div>
+
+          <div className="flex w-full items-center gap-3">
+            <div className="flex w-1/2 flex-col gap-3">
+              <Label>Дата</Label>
+              <ControlledCalendar
+                name="date"
+                label="Дата"
+                rules={{ required: "Выберите дату" }}
+              />
+            </div>
+            <div className="flex w-1/2 flex-col gap-3">
+              <Label htmlFor="time">Время</Label>
+              <Input
+                name="time"
+                type="time"
+                step="60"
+                className="appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+              />
+            </div>
+          </div>
         </form>
       </FormProvider>
       <DialogFooter>
         <DialogClose asChild>
-          <Button size="lg" variant="secondary">
+          <Button size="m" variant="flat">
             Закрыть
           </Button>
         </DialogClose>
-        <ButtonLink href={submitHref} target="_blank" size="lg">
+        <ButtonLink
+          disabled={!isValid}
+          href={submitHref}
+          target="_blank"
+          size="m"
+        >
           Готово
         </ButtonLink>
       </DialogFooter>

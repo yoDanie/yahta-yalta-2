@@ -46,3 +46,27 @@ export const debounce = (callback: any, timeout: any = 400) => {
 
 export const formatPrice = (price: number) =>
   `${price.toLocaleString("ru-RU")} руб/час`
+
+const pluralRules = new Intl.PluralRules("ru-RU")
+
+const forms = {
+  hours: {
+    one: "час",
+    few: "часа",
+    many: "часов",
+    other: "часов",
+  },
+  people: {
+    one: "человек",
+    few: "человека",
+    many: "человек",
+    other: "человек",
+  },
+} as const
+
+type FormKey = keyof typeof forms
+
+export function pluralize(n: number, key: FormKey): string {
+  const category = pluralRules.select(n) as keyof (typeof forms)[FormKey]
+  return forms[key][category]
+}

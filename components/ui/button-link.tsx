@@ -9,6 +9,7 @@ import { buttonVariants } from "./button"
 type ButtonLinkProps = LinkProps &
   VariantProps<typeof buttonVariants> & {
     className?: string
+    disabled?: boolean
     asChild?: boolean
     children: React.ReactNode
     target?: string
@@ -23,6 +24,7 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       asChild = false,
       children,
       target = "_self",
+      disabled,
       ...props
     },
     ref,
@@ -30,7 +32,10 @@ const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     const Comp = asChild ? Slot : Link
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(
+          disabled && "pointer-events-none opacity-50",
+          buttonVariants({ variant, size, className }),
+        )}
         ref={ref}
         target={target}
         rel="noopener noreferrer"

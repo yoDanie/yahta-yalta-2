@@ -106,7 +106,7 @@ export function Combobox({
             role="combobox"
             aria-expanded={open}
             className={cn(
-              "h-[56px] w-full justify-between px-3 py-4",
+              "h-[40px] w-full justify-between px-3 py-4",
               className,
             )}
             {...field}
@@ -147,7 +147,7 @@ export function Combobox({
         onWheel={(e) => e.stopPropagation()}
       >
         <Command filter={customFilter}>
-          <ScrollArea className="h-[300px]">
+          <ScrollArea className="h-fit max-h-[300px]">
             <CommandList>
               {isLoading ? (
                 <div className="flex items-center justify-center p-4">
