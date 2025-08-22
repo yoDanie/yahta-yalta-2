@@ -3,9 +3,14 @@ import { Caveat, Montserrat } from "next/font/google"
 import Script from "next/script"
 
 import "./globals.css"
+import "swiper/css"
+import "swiper/css/free-mode"
+import "swiper/css/navigation"
+import "swiper/css/thumbs"
+import "swiper/css/pagination"
 import "./swiper.scss"
+
 import { cn } from "@/lib/utils"
-// import { ScrollArea } from "@/components/ui/scroll-area"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer/Footer"
 
@@ -46,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
         className={cn(
           montserrat.variable,
@@ -79,7 +84,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* </ScrollArea> */}
       </body>
     </html>
   )

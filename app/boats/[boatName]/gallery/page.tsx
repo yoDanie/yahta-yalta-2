@@ -22,7 +22,7 @@ const modEnabled = {
   enabled: true,
 }
 
-export const GalleryPage = () => {
+const GalleryPage = () => {
   const [searchParams] = useSearchParams()
 
   const { boatName } = useParams<{ boatName: BoatName }>()

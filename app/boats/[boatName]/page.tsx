@@ -61,7 +61,7 @@ export async function generateMetadata({
   }
 }
 
-export const BoatPage = async ({ params }: { params: Params }) => {
+const BoatPage = async ({ params }: { params: Params }) => {
   const { boatName } = await params
 
   const { data, images, mainImage } = getBoatData(boatName as BoatName)
@@ -114,7 +114,7 @@ export const BoatPage = async ({ params }: { params: Params }) => {
       <div className={styles.details}>
         <div className={styles.order}>
           <div className={styles.subtitle}>Забронировать</div>
-          <Contacts boatData={data} />
+          <Contacts />
         </div>
         <div className={styles.description}>
           <div className={styles.subtitle}>Описание</div>
