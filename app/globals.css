@@ -75,6 +75,19 @@
       var(--color-lightblue)
     );
   }
+
+  .closeWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35); /* тёмная подложка */
+    backdrop-filter: blur(6px); /* сам блюр */
+    -webkit-backdrop-filter: blur(6px); /* поддержка Safari */
+    transition: all 0.2s ease;
+  }
 }
 
 @keyframes shimmer {

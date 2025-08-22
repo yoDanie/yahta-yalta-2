@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PropsWithChildren } from "react"
 import { Contacts } from "../Contacts"
 import { BookingForm } from "./BookingForm"
+import { ScrollArea } from "../ui/scroll-area"
 
 export function BookingPopover({ children }: PropsWithChildren) {
   return (
@@ -17,24 +18,28 @@ export function BookingPopover({ children }: PropsWithChildren) {
       <DialogTrigger asChild>{children}</DialogTrigger>
 
       <DialogContent aria-describedby={undefined} className="sm:min-w-[600px]">
-        <DialogHeader>
-          <DialogTitle>Способ связи</DialogTitle>
-        </DialogHeader>
+        <ScrollArea className="max-h-[95dvh]">
+          <div className="flex flex-col gap-8 p-6">
+            <DialogHeader>
+              <DialogTitle>Способ связи</DialogTitle>
+            </DialogHeader>
 
-        <Tabs defaultValue="write" className="flex w-full flex-col gap-8">
-          <TabsList className="w-full">
-            <TabsTrigger value="call">Позвонить</TabsTrigger>
-            <TabsTrigger value="write">Написать</TabsTrigger>
-          </TabsList>
+            <Tabs defaultValue="write" className="flex w-full flex-col gap-8">
+              <TabsList className="w-full">
+                <TabsTrigger value="call">Позвонить</TabsTrigger>
+                <TabsTrigger value="write">Написать</TabsTrigger>
+              </TabsList>
 
-          <TabsContent value="call" className="flex justify-center">
-            <Contacts />
-          </TabsContent>
+              <TabsContent value="call" className="flex justify-center">
+                <Contacts />
+              </TabsContent>
 
-          <TabsContent value="write">
-            <BookingForm />
-          </TabsContent>
-        </Tabs>
+              <TabsContent value="write">
+                <BookingForm />
+              </TabsContent>
+            </Tabs>
+          </div>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   )
