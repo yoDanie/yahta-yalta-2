@@ -70,11 +70,11 @@ const BoatPage = async ({ params }: { params: Params }) => {
   const thumbs = images.slice(1, 4)
 
   return (
-    <>
-      <div className={styles.showcase}>
-        <h1 className={styles.titleMobile}>{capitalize(slug)}</h1>
+    <div className={styles.root}>
+      <h1 className={styles.title}>{capitalize(slug)}</h1>
 
-        <div className="flex w-3/5 flex-col gap-3">
+      <div className={styles.showcase}>
+        <div className={styles.photos}>
           <Link
             className="scale-animated-xs relative h-3/4"
             href={`/boats/${name}/gallery?initialSlide=${0}`}
@@ -84,9 +84,10 @@ const BoatPage = async ({ params }: { params: Params }) => {
               alt={`Заглавное фото яхты ${slug}`}
               fill
               priority
+              sizes="(max-width: 1280px) 100vw, 60vw"
             />
           </Link>
-          <div className="flex h-1/4 w-full gap-3">
+          <div className={styles.thumbs}>
             {thumbs.map((src, index) => (
               <Link
                 key={index}
@@ -97,34 +98,24 @@ const BoatPage = async ({ params }: { params: Params }) => {
                   src={src}
                   alt={`Фото яхты ${slug}`}
                   fill
+                  sizes="(max-width: 1280px) 33vw, 20vw"
                 />
               </Link>
             ))}
           </div>
         </div>
-        <div className="flex w-2/5 flex-col items-center gap-[80px] px-5 py-12">
-          <h1 className={styles.title}>
-            {capitalize(slug)}
-            {/* <Sailboat /> */}
-          </h1>
+
+        <div className={styles.about}>
           <BoatParameters {...data} />
-        </div>
-
-        <RopeDivider />
-      </div>
-      <div className={styles.details}>
-        <div className={styles.order}>
-          <div className={styles.subtitle}>Забронировать</div>
-          <Contacts />
-        </div>
-        <div className={styles.description}>
-          <div className={styles.subtitle}>Описание</div>
-          <div className={styles.descriptionText}>{description}</div>
+          <div className={styles.description}>
+            <div className={styles.subtitle}>Описание</div>
+            <div className={styles.descriptionText}>{description}</div>
+          </div>
         </div>
       </div>
 
-      <Boats title="Другие яхты" currentBoat={name} />
-    </>
+      <Boats topRopeDivider title="Другие яхты" currentBoat={name} />
+    </div>
   )
 }
 

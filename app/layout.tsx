@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Caveat, Montserrat } from "next/font/google"
 import Script from "next/script"
-
 import "./globals.css"
 import "swiper/css"
 import "swiper/css/free-mode"
@@ -80,7 +79,12 @@ export default function RootLayout({
         </Script>
         {/* <ScrollArea className="relative flex h-dvh w-full flex-col"> */}
         <Header />
-        <main className="min-h-[calc(100dvh - 80px)] relative flex flex-col overflow-hidden pt-[80px]">
+        <main
+          className={cn(
+            "min-h-[100dvh]",
+            "relative flex flex-col overflow-hidden",
+          )}
+        >
           {children}
         </main>
         <Footer />

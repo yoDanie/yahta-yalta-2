@@ -31,8 +31,9 @@ export const Intro = () => {
             самыми красивыми местами Ялты из яхты, совершая морскую прогулку к
             замку Ласточкино гнездо, скалам Адалары, Медведь-горе, скале Дива...
           </h3>
-          <BookingPopover />
-          {/* <Button>Подобрать яхту</Button> */}
+          <BookingPopover>
+            <Button>Подобрать яхту</Button>
+          </BookingPopover>
         </div>
       </div>
     </IntroWrapper>

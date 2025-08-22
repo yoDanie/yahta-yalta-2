@@ -9,6 +9,8 @@ import {
   ShipWheel,
   Users,
 } from "lucide-react"
+import { BookingPopover } from "@/components/BookingPopover/BookingPopover"
+import { Button } from "@/components/ui/button"
 
 export const BoatParameters = (boatData: BoatData) => {
   const { price, type, capacity, length, width, cabins, sleeps } = boatData
@@ -41,13 +43,16 @@ export const BoatParameters = (boatData: BoatData) => {
   return (
     <div
       className={cn(
-        "flex w-full max-w-[600px] flex-col gap-[50px] rounded-[20px] p-[40px_20px] text-[20px] shadow-[0_0_5px_3px_var(--color-blue)]",
-        "bg-gradient-1-3",
+        "flex w-full max-w-[600px] flex-col gap-[30px] rounded-[20px] p-[40px_20px] text-xl",
+        "bg-gradient-1-3 border-bronze border",
       )}
     >
       <div className="text-bronze text-center text-[30px] font-bold">
         {formatPrice(price)}
       </div>
+      <BookingPopover>
+        <Button className="mx-auto w-fit">Забронировать</Button>
+      </BookingPopover>
       <BoatClauseMapping
         className="gap-[40px] text-[20px]"
         theme="dark"

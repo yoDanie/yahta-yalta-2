@@ -26,6 +26,7 @@ import { Slider } from "../ui/slider"
 import { ControlledCalendar } from "../ControlledInputs/ControlledCalendar"
 import { formatDate } from "date-fns"
 import { InfoHint } from "../InfoHint"
+import { useParams } from "next/navigation"
 
 const messengerOptions = [
   {
@@ -70,19 +71,27 @@ const allPrices = orderedBoatsData.map((b) => b.price)
 const minBoatPrice = Math.min(...allPrices)
 const maxBoatPrice = Math.max(...allPrices)
 
-const defaultValues = {
-  messenger: "telegram",
-  selectedBoat: chooseForMeVariant,
-  duration: [2, 5],
-  people: 2,
-  price: [minBoatPrice, maxBoatPrice],
-  date: null,
-  time: "09:00",
-}
-
 export const BookingForm = () => {
+  const { boatName } = useParams<{ boatName: BoatName }>()
+
+  let selectedBoatDefaultValue = chooseForMeVariant
+
+  if (boatName) {
+    const findedBoat = orderedBoatsData.find((b) => b.name === boatName)!.slug
+
+    selectedBoatDefaultValue = capitalize(findedBoat)
+  }
+
   const methods = useForm({
-    defaultValues,
+    defaultValues: {
+      messenger: "telegram",
+      selectedBoat: selectedBoatDefaultValue,
+      duration: [2, 5],
+      people: 2,
+      price: [minBoatPrice, maxBoatPrice],
+      date: null,
+      time: "09:00",
+    },
   })
 
   const {

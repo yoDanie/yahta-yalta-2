@@ -32,8 +32,6 @@ export const ErrorMessageWrapper = memo(
     const hasError = isDirty && isTouched && Boolean(error?.message)
     const hasLastErrorMessage = Boolean(lastErrorMessage)
 
-    console.log(hasError)
-
     return (
       <div className={cn("flex w-full min-w-0 flex-col gap-1", className)}>
         {children}

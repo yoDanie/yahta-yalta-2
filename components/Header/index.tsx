@@ -10,8 +10,12 @@ import { NavMenu } from "./NavMenu"
 import useHeaderScroll from "./useHeaderScroll"
 import { Link } from "@/components/Link"
 import { cn } from "@/lib/utils"
+import { usePathname } from "next/navigation"
 
 export const Header = () => {
+  const pathname = usePathname()
+  const isGalleryPage = pathname?.includes("/gallery")
+
   const [isBurgerOpened, setBurgerOpened] = useState(false)
   const [isMessengersOpened, setMessengersOpened] = useState(false)
 
@@ -25,6 +29,8 @@ export const Header = () => {
 
   // не работает, если обернуто в ScrollArea
   const headerState = useHeaderScroll()
+
+  if (isGalleryPage) return null
 
   return (
     <header
@@ -54,11 +60,8 @@ export const Header = () => {
       /> */}
 
       <div className="flex items-center gap-3 text-right">
-        <div className="flex flex-col gap-2">
-          <Link
-            href="/"
-            className="font-caveat text-xl font-semibold uppercase"
-          >
+        <div className="flex flex-col gap-1">
+          <Link href="/" className="text-xl font-bold uppercase">
             Яхта-ялта
           </Link>
           <div className="text-sm font-light">Аренда яхт и катеров в Ялте</div>

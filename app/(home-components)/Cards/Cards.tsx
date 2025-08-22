@@ -8,6 +8,7 @@ import bgImage from "./cards-bg-2.jpg"
 import styles from "./cards.module.scss"
 import polaroidImage from "./polaroid.png"
 import { Button } from "@/components/ui/button"
+import { BookingPopover } from "@/components/BookingPopover/BookingPopover"
 
 const Card = ({ src, alt, caption }: any) => (
   <div className={styles.card}>
@@ -51,7 +52,9 @@ export const Cards = () => (
           Забронируйте морскую прогулку вдоль берега Ялты и добавьте яркие фото
           в свою коллекцию!
         </span>
-        <Button className="animate-bounce">Забронировать яхту</Button>
+        <BookingPopover>
+          <Button className="animate-bounce">Забронировать яхту</Button>
+        </BookingPopover>
       </div>
     </div>
   </Section>

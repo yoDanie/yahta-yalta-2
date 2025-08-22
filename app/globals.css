@@ -25,37 +25,6 @@
 
   --color-border: var(--border);
   --color-ring: var(--ring);
-
-  --animate-fade: fade 0.5s ease-out forwards;
-  --animate-wave: wave 10s linear infinite;
-  --animate-wave-reverse: wave-reverse 10s linear infinite;
-
-  @keyframes wave {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-  @keyframes wave-reverse {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  }
-
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 }
 
 @layer base {
@@ -72,7 +41,7 @@
     @apply cursor-pointer transition-opacity duration-200 hover:opacity-80;
   }
   .scale-animated-xs {
-    @apply transition duration-200 hover:scale-105;
+    @apply transition duration-200 hover:scale-101;
   }
   .scale-animated {
     @apply transition duration-200 hover:scale-125;

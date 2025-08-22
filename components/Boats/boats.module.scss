@@ -24,10 +24,9 @@
   }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 640px) {
   .boats {
     grid-gap: 20px;
-    margin: 0 auto;
     grid-template-columns: repeat(1, 1fr);
   }
 }

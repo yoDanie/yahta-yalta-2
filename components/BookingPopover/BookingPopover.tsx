@@ -1,5 +1,4 @@
 "use client"
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -8,17 +7,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { PropsWithChildren } from "react"
 import { Contacts } from "../Contacts"
 import { BookingForm } from "./BookingForm"
 
-export function BookingPopover() {
+export function BookingPopover({ children }: PropsWithChildren) {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button>Подобрать яхту</Button>
-      </DialogTrigger>
+      <DialogTrigger asChild>{children}</DialogTrigger>
 
-      <DialogContent className="sm:min-w-[600px]">
+      <DialogContent aria-describedby={undefined} className="sm:min-w-[600px]">
         <DialogHeader>
           <DialogTitle>Способ связи</DialogTitle>
         </DialogHeader>

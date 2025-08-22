@@ -9,26 +9,24 @@ import {
 } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
-import styles from "./gallery.module.scss"
-import { useEscapeKey } from "./useEscapeKey"
+import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
+import { getBoatData } from "@/lib/getBoatData"
+import { Scaling } from "lucide-react"
 import Link from "next/link"
 import { useParams, useSearchParams } from "next/navigation"
-import { getBoatData } from "@/lib/getBoatData"
-import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
-import { Minimize } from "lucide-react"
-import { cn } from "@/lib/utils"
+import styles from "./gallery.module.scss"
+import { useEscapeKey } from "./useEscapeKey"
 
 const modEnabled = {
   enabled: true,
 }
 
 const GalleryPage = () => {
-  const [searchParams] = useSearchParams()
-
   const { boatName } = useParams<{ boatName: BoatName }>()
   const { data, images } = getBoatData(boatName)
 
-  const initialSlide = searchParams[1] || 0
+  const searchParams = useSearchParams()
+  const initialSlide = Number(searchParams.get("initialSlide") ?? 0)
 
   useEscapeKey(boatName)
 
@@ -64,21 +62,26 @@ const GalleryPage = () => {
     }
   }, [])
 
+  useEffect(() => {
+    if (mainSwiper && initialSlide !== undefined) {
+      mainSwiper.slideTo(initialSlide)
+    }
+  }, [mainSwiper, initialSlide])
+
   return (
     <div className={styles.root}>
       <Link
         href={`/boats/${data?.name}`}
         className="link absolute top-[20px] right-[10px] z-20"
       >
-        <Minimize className={cn("size-12 text-cyan-400", styles.close)} />
+        <div className={styles.closeWrapper}>
+          <Scaling />
+        </div>
       </Link>
 
-      {/* <Carousel images={images} /> */}
       <div className="h-4/5">
         <Swiper
-          loop
           navigation={modEnabled}
-          initialSlide={Number(initialSlide)}
           className="h-full"
           scrollbar={modEnabled}
           keyboard={modEnabled}
@@ -92,6 +95,7 @@ const GalleryPage = () => {
             <SwiperSlide key={src}>
               <BoatImageWithSkeleton
                 priority
+                sizes="100vw"
                 className={styles.img}
                 key={index}
                 src={src}
@@ -125,6 +129,10 @@ const GalleryPage = () => {
                 fill
                 src={src}
                 alt={`Фото-миниатюра ${data?.slug}`}
+                sizes="(max-width: 600px) 33vw,
+              (max-width: 1024px) 25vw,
+              (max-width: 1440px) 20vw,
+              16vw"
               />
             </SwiperSlide>
           ))}
