@@ -111,7 +111,7 @@ export const BookingForm = () => {
   const orderDetails = encodeURIComponent(
     `Здравствуйте! Желаю забронировать яхту.
 • ${selectedBoat === chooseForMeVariant ? `Нужно подобрать яхту по цене ${priceText}` : `Выбрали яхту «${selectedBoat}»`}
-• Нас будет ${people} ${pluralize(people, "people")}
+• ${people === 1 ? "На одного человека" : `Нас будет ${people} ${pluralize(people, "people")}`}
 • Длительность прогулки - ${durationText}
 • Начало прогулки - ${
       date &&
