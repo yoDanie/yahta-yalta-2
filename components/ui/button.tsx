@@ -18,7 +18,7 @@ const buttonVariants = cva(
         lg: "px-8 py-4 text-lg font-semibold",
         xs: "max-h-[32px] max-w-[32px] p-1",
         sm: "h-[32px] gap-1.5 rounded-md px-3 has-[>svg]:px-2.5",
-        m: "h-[40px] rounded-md px-4 text-lg has-[>svg]:px-4",
+        m: "h-[40px] rounded-md px-4 has-[>svg]:px-4",
       },
     },
     defaultVariants: {
