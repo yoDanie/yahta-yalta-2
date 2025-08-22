@@ -23,7 +23,7 @@ export const Header = () => {
     setMessengersOpened((state) => !state)
   }
 
-  // не работает, т.к у нас обернуто в ScrollArea
+  // не работает, если обернуто в ScrollArea
   const headerState = useHeaderScroll()
 
   return (
@@ -42,7 +42,7 @@ export const Header = () => {
         onClose={() => setMessengersOpened(false)}
       />
 
-      <NavMenu
+      {/* <NavMenu
         isOpened={isBurgerOpened}
         burger={
           <Burger
@@ -51,7 +51,7 @@ export const Header = () => {
             onClose={() => setBurgerOpened(false)}
           />
         }
-      />
+      /> */}
 
       <div className="flex items-center gap-3 text-right">
         <div className="flex flex-col gap-2">

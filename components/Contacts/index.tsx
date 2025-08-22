@@ -3,38 +3,29 @@ import viber from "@/public/icons/viber.svg"
 import whatsapp from "@/public/icons/whatsapp.svg"
 
 import { Image } from "@/components/Image"
-import { capitalize } from "@/lib/utils"
 
 import styles from "./index.module.scss"
 
-type ContactsProps = {
-  boatData?: BoatData
-}
+export const TELEGRAM_BASE = "https://t.me/DanielYalta"
+export const WHATSAPP_BASE = "https://wa.me/79781000171"
 
-export const Contacts = ({ boatData }: ContactsProps) => {
-  const space = "%20"
-  const text = boatData
-    ? `Здравствуйте!${space}Желаю${space}забронировать${space}${
-        boatData.type === "catamaran" ? "катамаран" : "яхту"
-      }${space}${capitalize(boatData.slug)}`
-    : ""
-
+export const Contacts = () => {
   const chats = [
     {
-      href: `https://t.me/RodionYalta?text=${text}`,
+      href: TELEGRAM_BASE,
       src: telegram,
       alt: "телеграм контакт",
     },
     {
-      href: `https://wa.me/79781000171?text=${text}`,
+      href: WHATSAPP_BASE,
       src: whatsapp,
       alt: "ватсап контакт",
     },
-    {
-      href: `viber://chat?number=79781000171&text=${text}`,
-      src: viber,
-      alt: "вайбер контакт",
-    },
+    // {
+    //   href: `viber://chat?number=79781000171&text=${text}`,
+    //   src: viber,
+    //   alt: "вайбер контакт",
+    // },
   ]
 
   return (
@@ -54,7 +45,7 @@ export const Contacts = ({ boatData }: ContactsProps) => {
 
       <div className={styles.contacts}>
         <div>Родион:</div>
-        <a className="link" href="tel:+79781000171">
+        <a className={styles.phoneHighlight} href="tel:+79781000171">
           +7 (978) 100-01-71
         </a>
       </div>

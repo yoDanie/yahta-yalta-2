@@ -107,3 +107,30 @@
     );
   }
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.phone-link {
+  @apply relative inline-block font-semibold transition-transform duration-300;
+  background: linear-gradient(
+    90deg,
+    var(--color-bronze),
+    var(--color-accent-orange-hover),
+    var(--color-bronze)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &:hover {
+    animation: shimmer 1.5s linear infinite;
+    transform: scale(1.05) rotate(-1deg);
+  }
+}

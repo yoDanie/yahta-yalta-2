@@ -3,6 +3,7 @@ import styles from "./intro.module.scss"
 import { IntroWrapper } from "./IntroWrapper"
 import bgImage from "./intro-1.jpg"
 import { Image } from "@/components/Image"
+import { BookingPopover } from "@/components/BookingPopover/BookingPopover"
 
 export const Intro = () => {
   return (
@@ -30,7 +31,8 @@ export const Intro = () => {
             самыми красивыми местами Ялты из яхты, совершая морскую прогулку к
             замку Ласточкино гнездо, скалам Адалары, Медведь-горе, скале Дива...
           </h3>
-          <Button>Подобрать яхту</Button>
+          <BookingPopover />
+          {/* <Button>Подобрать яхту</Button> */}
         </div>
       </div>
     </IntroWrapper>

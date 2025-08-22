@@ -1,16 +1,16 @@
-import * as React from 'react'
-import { ErrorMessageWrapper } from '@/components/ui/ErrorMessageWrapper'
-import { ControllerProps, useController, useFormContext } from 'react-hook-form'
-import { X } from 'lucide-react'
-import { Spinner } from './spinner'
-import { cn } from '@/lib/utils'
-import { MaskitoOptions } from '@maskito/core'
-import { useMaskito } from '@maskito/react'
-import { withMaskitoRegister } from '@/utils/with-maskito-register'
+import * as React from "react"
+import { ControllerProps, useController, useFormContext } from "react-hook-form"
+import { X } from "lucide-react"
+import { Spinner } from "./spinner"
+import { cn } from "@/lib/utils"
+import { MaskitoOptions } from "@maskito/core"
+import { useMaskito } from "@maskito/react"
+import { ErrorMessageWrapper } from "./ErrorMessageWrapper"
+import { withMaskitoRegister } from "@/lib/with-maskito-register"
 
 const Input = React.forwardRef<
   HTMLInputElement,
-  React.ComponentProps<'input'> & {
+  React.ComponentProps<"input"> & {
     isCleanable?: boolean
     isLoading?: boolean
     containerClassName?: string
@@ -18,7 +18,7 @@ const Input = React.forwardRef<
     errorMessageWrapperClassName?: string
     leftContent?: React.ReactNode
     rightContent?: React.ReactNode
-  } & Pick<ControllerProps, 'name' | 'rules' | 'defaultValue'>
+  } & Pick<ControllerProps, "name" | "rules" | "defaultValue">
 >(
   (
     {
@@ -37,13 +37,13 @@ const Input = React.forwardRef<
       rightContent,
       ...props
     },
-    ref
+    ref,
   ) => {
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
       if (
-        type === 'number' &&
-        ['e', 'E', '+', '-'].includes(event.key) &&
-        !(event.key === '-' && event.currentTarget.selectionStart === 0)
+        type === "number" &&
+        ["e", "E", "+", "-"].includes(event.key) &&
+        !(event.key === "-" && event.currentTarget.selectionStart === 0)
       ) {
         event.preventDefault()
       }
@@ -59,14 +59,14 @@ const Input = React.forwardRef<
     })
 
     const handleClear = () => {
-      field.onChange('')
+      field.onChange("")
     }
 
     const inputRef = useMaskito({ options: maskitoOptions })
 
     return (
       <ErrorMessageWrapper name={name} className={errorMessageWrapperClassName}>
-        <div className={cn('relative flex items-center', containerClassName)}>
+        <div className={cn("relative flex items-center", containerClassName)}>
           {leftContent && <div className="absolute left-2">{leftContent}</div>}
           {isLoading && (
             <div className="absolute inset-0 z-10 flex items-center justify-center">
@@ -76,10 +76,10 @@ const Input = React.forwardRef<
           <input
             type={type}
             className={cn(
-              'border-input ring-offset-background focus-visible:ring-ring flex h-full w-full gap-[8px] rounded-[12px] border bg-background-gray p-[16px] text-base file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-base placeholder:text-text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-              type === 'number' &&
-                'appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
-              className
+              "border-input ring-offset-background focus-visible:ring-ring bg-background-gray file:text-foreground placeholder:text-text-secondary flex h-full w-full gap-[8px] rounded-[12px] border p-[16px] text-base file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-base focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+              type === "number" &&
+                "appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none",
+              className,
             )}
             onKeyDown={handleKeyDown}
             disabled={disabled || isLoading}
@@ -95,16 +95,16 @@ const Input = React.forwardRef<
               onClick={handleClear}
               className="link absolute right-2"
             >
-              <X className="!size-5 text-icon-gray" />
+              <X className="text-icon-gray !size-5" />
             </button>
           )}
           {rightContent}
         </div>
       </ErrorMessageWrapper>
     )
-  }
+  },
 )
 
-Input.displayName = 'Input'
+Input.displayName = "Input"
 
 export { Input }
