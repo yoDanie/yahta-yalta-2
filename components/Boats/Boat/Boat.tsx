@@ -26,16 +26,16 @@ export const Boat = ({ boatName }: BoatProps) => {
   } = getBoatData(boatName)
 
   const clauseMapping = [
+    {
+      key: "Цена",
+      value: formatPrice(price),
+      icon: boatIconMapping.price,
+    },
     { key: "Тип", value: boatTypeMapping[type], icon: boatIconMapping.type },
     {
       key: "Вместимость",
       value: `${capacity} человек`,
       icon: boatIconMapping.capacity,
-    },
-    {
-      key: "Цена",
-      value: formatPrice(price),
-      icon: boatIconMapping.price,
     },
   ]
 

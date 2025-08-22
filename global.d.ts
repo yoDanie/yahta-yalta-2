@@ -11,6 +11,7 @@ declare global {
     name: string
     price: number
     sleeps?: number
+    toilets?: number
     slug: string
     type: "sailing" | "motor" | "catamaran"
     width?: number

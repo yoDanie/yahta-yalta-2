@@ -21,12 +21,16 @@ import { raskat } from "./raskat"
 import { saintMary } from "./saintMary"
 import { snafu } from "./snafu"
 import { vaynah } from "./vaynah"
+import { goodMorning } from "./goodMorning"
+import { magicLight } from "./magicLight"
 
 export const orderedBoatsData: BoatData[] = [
-  alexandra,
   maestro,
+  alexandra,
   omega,
   natatores,
+  magicLight,
+  goodMorning,
   altair,
   alustar,
   anadel,

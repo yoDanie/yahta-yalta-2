@@ -2,18 +2,20 @@ import { boatTypeMapping } from "@/lib/constants"
 import { cn, formatPrice } from "@/lib/utils"
 import { BoatClauseMapping } from "@/components/BoatClauseMapping"
 import {
-  Bed,
+  BedDouble,
   MoveHorizontal,
   MoveVertical,
   Ship,
   ShipWheel,
+  Toilet,
   Users,
 } from "lucide-react"
 import { BookingPopover } from "@/components/BookingPopover/BookingPopover"
 import { Button } from "@/components/ui/button"
 
 export const BoatParameters = (boatData: BoatData) => {
-  const { price, type, capacity, length, width, cabins, sleeps } = boatData
+  const { price, type, capacity, length, width, cabins, sleeps, toilets } =
+    boatData
 
   const clauseMapping = [
     {
@@ -37,7 +39,12 @@ export const BoatParameters = (boatData: BoatData) => {
       icon: <MoveHorizontal className="size-5" />,
     },
     { key: "Кают", value: cabins, icon: <ShipWheel className="size-5" /> },
-    { key: "Спальных мест", value: sleeps, icon: <Bed className="size-5" /> },
+    {
+      key: "Спальных мест",
+      value: sleeps,
+      icon: <BedDouble className="size-5" />,
+    },
+    { key: "Санузлов", value: toilets, icon: <Toilet className="size-5" /> },
   ]
 
   return (
@@ -47,9 +54,9 @@ export const BoatParameters = (boatData: BoatData) => {
         "bg-gradient-1-3 border-bronze border",
       )}
     >
-      <div className="text-bronze text-center text-[30px] font-bold">
+      <span className="text-bronze text-center text-[30px] font-bold">
         {formatPrice(price)}
-      </div>
+      </span>
       <BookingPopover>
         <Button className="mx-auto w-fit">Забронировать</Button>
       </BookingPopover>

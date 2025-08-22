@@ -5,8 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const capitalize = (s: string) =>
-  s[0].toUpperCase() + s.slice(1).toLowerCase()
+export const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1)
 
 export const throttle = (cb: any, delay: number = 200) => {
   let shouldWait = false

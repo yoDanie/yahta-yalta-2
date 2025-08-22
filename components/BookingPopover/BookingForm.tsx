@@ -84,7 +84,7 @@ export const BookingForm = () => {
 
   const methods = useForm({
     defaultValues: {
-      messenger: "telegram",
+      messenger: "whatsapp",
       selectedBoat: selectedBoatDefaultValue,
       duration: [2, 5],
       people: 2,
