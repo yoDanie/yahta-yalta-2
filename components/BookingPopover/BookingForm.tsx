@@ -128,8 +128,8 @@ export const BookingForm = () => {
     <>
       <FormProvider {...methods}>
         <form className="flex flex-col gap-8">
-          <div className="grid gap-3">
-            <Label htmlFor="messenger">Куда</Label>
+          <div className="grid gap-2">
+            <span className="font-medium">Куда</span>
             <Combobox
               rules={{ required: "Выберите мессенджер" }}
               name="messenger"
@@ -138,8 +138,8 @@ export const BookingForm = () => {
             />
           </div>
 
-          <div className="grid gap-3">
-            <Label htmlFor="selectedBoat">Выбранная яхта</Label>
+          <div className="grid gap-2">
+            <span className="font-medium">Выбранная яхта</span>
             <Combobox
               name="selectedBoat"
               options={boatOptions}
@@ -148,8 +148,8 @@ export const BookingForm = () => {
           </div>
 
           {selectedBoat === chooseForMeVariant && (
-            <div className="grid gap-3">
-              <Label htmlFor="price">Цена в час</Label>
+            <div className="grid gap-2">
+              <span className="font-medium">Цена в час</span>
               <div className="flex flex-col items-center gap-1">
                 <div>{priceText}</div>
                 <Slider
@@ -162,9 +162,9 @@ export const BookingForm = () => {
             </div>
           )}
 
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             <div className="flex items-center gap-2">
-              <Label htmlFor="duration">Длительность прогулки</Label>
+              <span className="font-medium">Длительность</span>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <CircleQuestionMark className="size-5" />
@@ -180,7 +180,7 @@ export const BookingForm = () => {
             </div>
           </div>
 
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             <div className="flex items-center gap-2">
               <Label htmlFor="people">Количество пассажиров</Label>
               <Tooltip>
@@ -200,16 +200,16 @@ export const BookingForm = () => {
             />
           </div>
 
-          <div className="flex w-full items-center gap-3">
-            <div className="flex w-1/2 flex-col gap-3">
-              <Label>Дата</Label>
+          <div className="flex w-full items-center gap-2">
+            <div className="flex w-1/2 flex-col gap-2">
+              <span className="leading-none font-medium">Дата</span>
               <ControlledCalendar
                 name="date"
                 label="Дата"
                 rules={{ required: "Выберите дату" }}
               />
             </div>
-            <div className="flex w-1/2 flex-col gap-3">
+            <div className="flex w-1/2 flex-col gap-2">
               <Label htmlFor="time">Время</Label>
               <Input
                 name="time"
