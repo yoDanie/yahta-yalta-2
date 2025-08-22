@@ -25,6 +25,7 @@ import { Slider } from "../ui/slider"
 
 import { ControlledCalendar } from "../ControlledInputs/ControlledCalendar"
 import { formatDate } from "date-fns"
+import { InfoHint } from "../InfoHint"
 
 const messengerOptions = [
   {
@@ -165,14 +166,7 @@ export const BookingForm = () => {
           <div className="grid gap-2">
             <div className="flex items-center gap-2">
               <span className="font-medium">Длительность</span>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <CircleQuestionMark className="size-5" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Минимальная длительность прогулки - 2 часа</p>
-                </TooltipContent>
-              </Tooltip>
+              <InfoHint>Минимальная длительность прогулки — 2 часа</InfoHint>
             </div>
             <div className="flex flex-col items-center gap-1">
               <div>{durationText}</div>
@@ -183,14 +177,7 @@ export const BookingForm = () => {
           <div className="grid gap-2">
             <div className="flex items-center gap-2">
               <Label htmlFor="people">Количество пассажиров</Label>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <CircleQuestionMark className="size-5" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Максимум 10 пассажиров</p>
-                </TooltipContent>
-              </Tooltip>
+              <InfoHint>Максимум 10 пассажиров</InfoHint>
             </div>
             <ControlledNumberInput
               name="people"

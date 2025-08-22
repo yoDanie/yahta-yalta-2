@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title,
     type: "website",
     url: "/",
-    // images:
+    images: "/images/og-image.jpg",
     description:
       "Морская прогулка в Ялте. Морская прогулка к Ласточкино гнездо. Аренда яхты в Ялте. Аренда катера Ялта. Прогулка на яхте",
   },

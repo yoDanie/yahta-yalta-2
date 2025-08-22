@@ -6,7 +6,7 @@ import { Image } from "@/components/Image"
 
 import styles from "./index.module.scss"
 
-export const TELEGRAM_BASE = "https://t.me/DanielYalta"
+export const TELEGRAM_BASE = "https://t.me/RodionYalta"
 export const WHATSAPP_BASE = "https://wa.me/79781000171"
 
 export const Contacts = () => {

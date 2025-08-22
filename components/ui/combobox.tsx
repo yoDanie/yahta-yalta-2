@@ -69,8 +69,7 @@ export function Combobox({
     setOpen(false)
   }
 
-  const handleSelect = (currentValue: string) => {
-    const newValue = currentValue === value ? "" : currentValue
+  const handleSelect = (newValue: string) => {
     fieldOnChange(newValue)
     onChange?.(newValue)
     setOpen(false)

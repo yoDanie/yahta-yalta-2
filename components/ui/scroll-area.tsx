@@ -2,19 +2,31 @@
 
 import * as React from "react"
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
-
 import { cn } from "@/lib/utils"
+
+type ScrollAreaProps = React.ComponentPropsWithoutRef<
+  typeof ScrollAreaPrimitive.Root
+> & {
+  /** Доп. классы для Viewport. Если не указан, используем className рута */
+  viewportClassName?: string
+}
 
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+  ScrollAreaProps
+>(({ className, viewportClassName, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root
     ref={ref}
     className={cn("relative overflow-hidden", className)}
     {...props}
   >
-    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+    {/* ВАЖНО: overflow-auto и без h-full, чтобы max-h на Root/Viewport реально ограничивал высоту */}
+    <ScrollAreaPrimitive.Viewport
+      className={cn(
+        "w-full overflow-auto rounded-[inherit]",
+        viewportClassName ?? className, // пробрасываем ограничения высоты и сюда
+      )}
+    >
       {children}
     </ScrollAreaPrimitive.Viewport>
 
