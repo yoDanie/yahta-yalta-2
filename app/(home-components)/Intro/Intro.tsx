@@ -17,7 +17,7 @@ export const Intro = () => {
         />
       }
     >
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="bg-darkblue/60 absolute inset-0" />
       <div className="absolute inset-0 z-10 flex h-full w-full items-center justify-center pt-20 pb-[50px]">
         <div className="flex h-full w-[70%] flex-col items-center justify-between text-center text-shadow-lg/30">
           <div>

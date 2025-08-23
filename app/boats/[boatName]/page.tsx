@@ -4,11 +4,11 @@ import Link from "next/link"
 import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
 import { Boats } from "@/components/Boats/Boats"
 import { Image } from "@/components/Image"
-import { capitalize } from "@/lib/utils"
+import { capitalize, formatPrice } from "@/lib/utils"
 import styles from "./boatpage.module.scss"
 import { BoatParameters } from "./BoatParameters"
 
-import { boatTypeMapping, dashChar } from "@/lib/constants"
+import { boatTypeMapping, dashChar, SITE_URL } from "@/lib/constants"
 import type { Metadata } from "next"
 
 type Params = Promise<{ boatName: string }>
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { boatName } = await params
   const {
-    data: { slug, type, name },
+    data: { slug, type, name, price, capacity },
     mainImage,
   } = getBoatData(boatName as BoatName)
 
@@ -35,27 +35,30 @@ export async function generateMetadata({
 
   const titleMainPart = `${capitalize(slug)} ${dashChar} ${boatTypeMapping[type]} ${textAddition}`
 
-  const description = `${capitalize(boatTypeMapping[type])} ${textAddition} "${capitalize(
-    slug,
-  )}". Забронировать +7 978-1000-171 | Скидки на аренду светового дня и суток | ${
-    type === "sailing"
-      ? "Романтическая прогулка под парусом"
-      : "Рыбалка на яхте"
-  }`
+  const description = `Забронировать +7 978-1000-171 | Скидки на аренду светового дня и суток | Цена: ${formatPrice(price)} | Вместимость ${dashChar} до ${capacity} пассажиров | Рыбалка на яхте`
 
-  const keywords = `яхта ${slug}, яхта
-  ${slug} ялта, яхта ${name}, яхта ${name} ялта, ${keywordsMapping[type]}, рыбалка на яхте, морская прогулка, аренды яхты, заказать яхту, снять яхту, прогулки на яхте, прогулки на катере, морская прогулка ялта, морские прогулки, ялта, яхта, катер, аренда, морское путешествие, экскурсия, рыбалка, прогулка на яхте, снять яхту, аренда яхты с капитаном, аренда, заказать яхту, морская экскурсия ласточкино гнездо, ласточка, гнездо, гнездышко, гурзуф яхта, медведь гора яхта`
+  const keywords = `яхта ${slug}, яхта ${slug} ялта, яхта ${name}, яхта ${name} ялта, 
+аренда ${type === "catamaran" ? "катамарана" : type === "sailing" ? "парусной яхты" : "моторной яхты"} ${name}, 
+морская прогулка на ${name} в Ялте, рыбалка на ${name}, 
+${keywordsMapping[type]}, 
+прогулки на яхте, прогулки на катере, морская прогулка ялта, морские прогулки, 
+ялта, яхта, катер, аренда, морское путешествие, экскурсия, рыбалка, 
+прогулка на яхте, снять яхту, аренда яхты с капитаном, заказать яхту, 
+морская экскурсия ласточкино гнездо, ласточка, гнездо, гурзуф яхта, медведь гора яхта`
 
   return {
+    alternates: {
+      canonical: `${SITE_URL}boats/${name}`,
+    },
     title: `${titleMainPart}. Аренда и морская прогулка на ${capitalize(name)} в Ялте`,
     description,
     keywords,
     openGraph: {
-      // url: baseURL
+      url: `${SITE_URL}boats/${name}`,
       images: mainImage,
       type: "website",
       description,
-      title: `${titleMainPart}. Аренда яхты, морская прогулка в Ялте`,
+      title: `${titleMainPart}. Аренда яхты и морская прогулка в Ялте`,
     },
   }
 }

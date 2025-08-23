@@ -8,4 +8,4 @@ export const boatTypeMapping = {
 
 export const dashChar = "—"
 
-export const baseURL = "https://yahta-yalta.vercel.app"
+export const SITE_URL = "https://yahta-yalta.ru/"
