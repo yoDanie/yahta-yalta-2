@@ -20,7 +20,12 @@ export const MessengersBtn = ({
 
   return (
     <div className={styles.root} ref={setElRef}>
-      <button onClick={toggleOpened} className={styles.btn} type="button" />
+      <button
+        aria-label="Открыть контакты"
+        onClick={toggleOpened}
+        className={styles.btn}
+        type="button"
+      />
       <div
         className={cn(
           styles.messengers,

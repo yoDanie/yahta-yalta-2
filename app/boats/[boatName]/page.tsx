@@ -1,16 +1,15 @@
 import { getBoatData } from "@/lib/getBoatData"
 import Link from "next/link"
 
-import styles from "./boatpage.module.scss"
-import { capitalize } from "@/lib/utils"
-import { BoatParameters } from "./BoatParameters"
-import { Contacts } from "@/components/Contacts"
-import { Boats } from "@/components/Boats/Boats"
-import { RopeDivider } from "@/components/RopeDivider"
 import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
+import { Boats } from "@/components/Boats/Boats"
+import { Image } from "@/components/Image"
+import { capitalize } from "@/lib/utils"
+import styles from "./boatpage.module.scss"
+import { BoatParameters } from "./BoatParameters"
 
-import type { Metadata } from "next"
 import { boatTypeMapping, dashChar } from "@/lib/constants"
+import type { Metadata } from "next"
 
 type Params = Promise<{ boatName: string }>
 
@@ -79,7 +78,7 @@ const BoatPage = async ({ params }: { params: Params }) => {
             className="scale-animated-xs relative h-3/4"
             href={`/boats/${name}/gallery?initialSlide=${0}`}
           >
-            <BoatImageWithSkeleton
+            <Image
               src={mainImage}
               alt={`Заглавное фото яхты ${slug}`}
               fill
@@ -108,7 +107,7 @@ const BoatPage = async ({ params }: { params: Params }) => {
         <div className={styles.about}>
           <BoatParameters {...data} />
           <div className={styles.description}>
-            <div className={styles.subtitle}>Описание</div>
+            <h2 className={styles.subtitle}>Описание</h2>
             <div className={styles.descriptionText}>{description}</div>
           </div>
         </div>
