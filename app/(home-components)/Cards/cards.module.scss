@@ -27,7 +27,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px 0;
 }
 
 .card {
@@ -110,22 +109,6 @@
   gap: 30px;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  width: 50%;
-}
-
-.text {
-  line-height: 1.2;
-  font-size: 25px;
-  font-weight: 300;
-  font-style: italic;
-  text-align: center;
-}
-
 .polaroid {
   position: relative;
   width: 300px;
@@ -191,8 +174,5 @@
   }
   .callToAction {
     flex-direction: column;
-  }
-  .wrapper {
-    width: 90%;
   }
 }

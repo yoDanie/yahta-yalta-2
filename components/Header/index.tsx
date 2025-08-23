@@ -61,7 +61,7 @@ export const Header = () => {
 
       <div className="flex items-center gap-3 text-right">
         <div className="flex flex-col gap-1">
-          <Link href="/" className="text-xl font-bold uppercase">
+          <Link href="/" className="text-lg font-bold uppercase">
             Яхта-ялта
           </Link>
           <div className="text-sm font-light">Аренда яхт и катеров в Ялте</div>
@@ -69,7 +69,7 @@ export const Header = () => {
         <Link href="/">
           <Image
             placeholder="empty"
-            className="size-10 sm:size-14"
+            className="size-14 sm:size-16"
             src={logo}
             alt="лого яхта-ялта"
           />

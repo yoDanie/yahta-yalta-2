@@ -51,8 +51,8 @@ export const Cards = () => (
           <span className={styles.question}>?</span>
         </div>
       </div>
-      <div className={styles.wrapper}>
-        <span className={styles.text}>
+      <div className="flex flex-col items-center gap-[50px] sm:w-1/2">
+        <span className="text-center text-xl leading-tight font-light italic sm:text-2xl">
           Забронируйте морскую прогулку вдоль берега Ялты и добавьте яркие фото
           в свою коллекцию!
         </span>
