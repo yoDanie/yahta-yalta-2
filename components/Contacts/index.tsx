@@ -6,8 +6,10 @@ import { Image } from "@/components/Image"
 
 import styles from "./index.module.scss"
 
+export const PHONE_NUMBER = "79781000171"
+
 export const TELEGRAM_BASE = "https://t.me/RodionYalta"
-export const WHATSAPP_BASE = "https://wa.me/79781000171"
+export const WHATSAPP_BASE = `https://wa.me/${PHONE_NUMBER}`
 
 export const Contacts = () => {
   const chats = [
@@ -45,7 +47,7 @@ export const Contacts = () => {
 
       <div className={styles.contacts}>
         <div>Родион:</div>
-        <a className={styles.phoneHighlight} href="tel:+79781000171">
+        <a className={styles.phoneHighlight} href={`tel:+${PHONE_NUMBER}`}>
           +7 (978) 100-01-71
         </a>
       </div>

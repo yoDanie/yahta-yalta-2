@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer/Footer"
 import { SITE_URL } from "@/lib/constants"
+import { getRootJsonLd } from "./getRootJsonLd"
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -55,8 +56,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = getRootJsonLd({
+    description: metadata.description as string,
+  })
+
   return (
     <html lang="ru">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={cn(
           montserrat.variable,
@@ -83,7 +94,6 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', 'UA-204178349-2');`}
         </Script>
-        {/* <ScrollArea className="relative flex h-dvh w-full flex-col"> */}
         <Header />
         <main
           className={cn(

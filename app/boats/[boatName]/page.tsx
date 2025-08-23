@@ -10,6 +10,7 @@ import { BoatParameters } from "./BoatParameters"
 
 import { boatTypeMapping, dashChar, SITE_URL } from "@/lib/constants"
 import type { Metadata } from "next"
+import { getBoatJsonLd } from "./getBoatJsonLd"
 
 type Params = Promise<{ boatName: string }>
 
@@ -23,7 +24,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Params
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  searchParams: { [key: string]: string | string[] | undefined }
 }): Promise<Metadata> {
   const { boatName } = await params
   const {
@@ -71,8 +72,15 @@ const BoatPage = async ({ params }: { params: Params }) => {
 
   const thumbs = images.slice(1, 4)
 
+  const jsonLd = getBoatJsonLd({ data, images })
+
   return (
     <div className={styles.root}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <h1 className={styles.title}>{capitalize(slug)}</h1>
 
       <div className={styles.showcase}>

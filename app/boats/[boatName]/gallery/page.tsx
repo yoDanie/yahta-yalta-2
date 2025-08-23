@@ -8,6 +8,7 @@ import {
   Thumbs,
 } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
+import { Image } from "@/components/Image"
 
 import { BoatImageWithSkeleton } from "@/components/BoatImageWithSkeleton"
 import { getBoatData } from "@/lib/getBoatData"
@@ -93,13 +94,13 @@ const GalleryPage = () => {
         >
           {images.map((src, index) => (
             <SwiperSlide key={src}>
-              <BoatImageWithSkeleton
+              <Image
+                fill
                 priority
                 sizes="100vw"
                 className={styles.img}
                 key={index}
                 src={src}
-                fill
                 alt={`Заглавное фото ${data?.slug}`}
               />
             </SwiperSlide>
