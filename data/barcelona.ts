@@ -1,14 +1,14 @@
 export const barcelona: BoatData = {
-  slug: 'барселона',
-  type: 'sailing',
-  price: 7500,
-  name: 'barcelona',
+  slug: "барселона",
+  type: "sailing",
+  price: 12000,
+  name: "barcelona",
   capacity: 8,
   length: 13,
   cabins: 3,
   sleeps: 8,
   width: 4,
-  description: `Барселона - это греческая парусно-моторная яхта c 4 каютами.
+  description: `Барселона — это греческая парусно-моторная яхта c 4 каютами.
 
 Располагайтесь в зоне отдыха с обеденным столом под тентом, либо позагорайте на матрасах ближе к носовой части.
 

@@ -1,8 +1,8 @@
 export const karolina: BoatData = {
-  name: 'karolina',
-  slug: 'Каролина',
-  type: 'sailing',
-  description: `Karolina - это красивая, новая и просторная парусная яхта.
+  name: "karolina",
+  slug: "Каролина",
+  type: "sailing",
+  description: `Karolina — это красивая, новая и просторная парусная яхта.
 
 Размещение:
 4 каюты с двух спальными кроватями.
@@ -19,7 +19,7 @@ export const karolina: BoatData = {
 
 6-8 человек располагаются с комфортом. Максимально: 10 человек.
 `,
-  price: 8000,
+  price: 10000,
   capacity: 8,
   length: 14,
   cabins: 4,

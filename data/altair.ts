@@ -1,7 +1,7 @@
 export const altair: BoatData = {
   cabins: 2,
   capacity: 10,
-  price: 6500,
+  price: 9000,
   name: "altair",
   slug: "альтаир",
   type: "motor",

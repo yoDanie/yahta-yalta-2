@@ -1,7 +1,7 @@
 export const omega: BoatData = {
-  name: 'omega',
-  slug: 'Омега',
-  type: 'catamaran',
+  name: "omega",
+  slug: "Омега",
+  type: "catamaran",
   description: `Парусно-пассажирский катамаран ⛵️ОМЕГА⛵️ Производство Франция.
 
 - 3 пассажирских каюты
@@ -14,7 +14,7 @@ export const omega: BoatData = {
 
 Ждём вас для отличного времяпровождения на катамаране ОМЕГА ⛵️
 `,
-  price: 10000,
+  price: 12000,
   capacity: 10,
   length: 11,
   cabins: 3,
