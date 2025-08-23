@@ -10,27 +10,31 @@ export const Intro = () => {
     <IntroWrapper
       bgImage={
         <Image
+          fill
           priority
           src={bgImage}
           alt="Интро картинка - аренда яхт и катеров в Ялте"
         />
       }
     >
-      <div className={styles.content}>
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 z-10 flex h-full w-full items-center justify-center pt-20 pb-[50px]">
         <div className="flex h-full w-[70%] flex-col items-center justify-between text-center text-shadow-lg/30">
           <div>
             <h1 className={styles.title}>Аренда яхты в Ялте</h1>
-            <h2 className={styles.slogan}>
+            <h2 className="text-[20px] font-bold sm:text-[30px] md:text-[40px] lg:text-[50px] xl:text-[60px]">
               Совершите настоящее
-              <p>морское путешествие!</p>
+              <br />
+              морское путешествие!
             </h2>
           </div>
 
-          <h3 className={styles.subtitle}>
+          <h3 className="text-[16px] leading-[1.6] font-light italic sm:text-[18px] sm:leading-[1.4] md:text-[20px] lg:text-[24px]">
             Покупайтесь на диких пляжах или в открытом, чистом море. Полюбуйтесь
             самыми красивыми местами Ялты из яхты, совершая морскую прогулку к
             замку Ласточкино гнездо, скалам Адалары, Медведь-горе, скале Дива...
           </h3>
+
           <BookingPopover>
             <Button>Подобрать яхту</Button>
           </BookingPopover>

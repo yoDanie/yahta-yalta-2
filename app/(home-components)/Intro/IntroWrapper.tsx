@@ -21,7 +21,7 @@ export const IntroWrapper = ({
 
   return (
     <>
-      <div className={styles.root}>
+      <div className="relative h-[calc(100dvh+20px)] w-full">
         <RopeDivider />
         {bgImage}
         <Image
