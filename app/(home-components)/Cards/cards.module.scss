@@ -2,29 +2,20 @@
   width: 100%;
   background: var(--color-darkblue);
 
-  @media (min-width: 640px) {
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: hsla(215, 30%, 2%, 0.8);
-      z-index: 10;
-    }
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: hsla(215, 30%, 2%, 0.8);
+    z-index: 10;
   }
 }
 
 .bgImage {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
-
-  @media (min-width: 640px) {
-    & {
-      display: block;
-    }
-  }
 }
 
 .cards {

@@ -23,7 +23,7 @@ export const Cards = () => {
       title="Наполните жизнь приятными моментами..."
     >
       <Image
-        quality={50}
+        quality={30}
         className={styles.bgImage}
         src={bgImage}
         alt="фоновая картинка"
