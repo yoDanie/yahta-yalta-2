@@ -21,7 +21,7 @@ export function BookingPopover({ children }: PropsWithChildren) {
         aria-describedby={undefined}
         className="max-w-[90vw] sm:min-w-[600px]"
       >
-        <ScrollArea className="max-h-[90dvh]">
+        <ScrollArea className="max-h-[90svh]">
           <div className="flex flex-col gap-8 p-6 pt-8">
             <DialogHeader>
               <DialogTitle>Способ связи</DialogTitle>

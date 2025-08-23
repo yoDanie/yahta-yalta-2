@@ -5,7 +5,7 @@ export default function Loading() {
     <Spinner
       withContainer
       size="l"
-      containerClassName="h-[calc(100dvh-80px)]"
+      containerClassName="h-[calc(100svh-80px)]"
     />
   )
 }

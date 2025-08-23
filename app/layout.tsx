@@ -97,7 +97,7 @@ export default function RootLayout({
         <Header />
         <main
           className={cn(
-            "min-h-[100dvh]",
+            "min-h-[100svh]",
             "relative flex flex-col overflow-hidden",
           )}
         >

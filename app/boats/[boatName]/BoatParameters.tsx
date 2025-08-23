@@ -50,7 +50,7 @@ export const BoatParameters = (boatData: BoatData) => {
   return (
     <div
       className={cn(
-        "flex w-full max-w-[600px] flex-col gap-[30px] rounded-[20px] p-[40px_20px] text-xl",
+        "flex w-full max-w-[600px] flex-col gap-[30px] rounded-[20px] p-[20px] text-xl sm:px-[20px] sm:py-[40px]",
         "bg-gradient-1-3 border-bronze border",
       )}
     >
