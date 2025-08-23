@@ -24,7 +24,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Params
-  searchParams: { [key: string]: string | string[] | undefined }
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }): Promise<Metadata> {
   const { boatName } = await params
   const {
