@@ -1,11 +1,10 @@
 "use client"
 import { PropsWithChildren, ReactNode, useRef } from "react"
 import anchorImage from "./sea-anchor.png"
-import { Image } from "@/components/Image"
+import NextImage from "next/image"
 
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver"
 
-import styles from "./intro.module.scss"
 import { RopeDivider } from "@/components/RopeDivider"
 import { cn } from "@/lib/utils"
 
@@ -24,10 +23,13 @@ export const IntroWrapper = ({
       <div className="relative h-[calc(100svh+20px)] w-full">
         <RopeDivider />
         {bgImage}
-        <Image
+        <NextImage
           className={cn(
-            styles.anchor,
-            isBottomElementVisible && styles.animated,
+            "h-[114px] w-[115px]",
+            "md:h-[180px] md:w-[250px]",
+            "lg:h-[228px] lg:w-[310px]",
+            "absolute right-0 bottom-[-1%] z-20 translate-x-[100%] object-contain object-center transition-all duration-1000 ease-in-out",
+            isBottomElementVisible && "translate-x-0",
           )}
           src={anchorImage}
           alt="Якорь"
