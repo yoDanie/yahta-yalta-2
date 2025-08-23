@@ -1,10 +1,11 @@
 .anchor {
-  height: 260px;
-  width: auto;
+  aspect-ratio: 228 / 310;
+  height: 228px;
+  width: 310px;
   object-fit: contain;
   position: absolute;
   bottom: -1%;
-  right: 2%;
+  right: -5%;
   z-index: 20;
 
   transition: all 1s ease-in-out;
@@ -36,22 +37,11 @@
   }
 }
 
-@media (max-width: 1480px) {
-  .anchor {
-    height: 220px;
-  }
-}
-
-@media (max-width: 990px) {
-  .anchor {
-    height: 160px;
-    right: 1%;
-  }
-}
-
 @media (max-width: 770px) {
   .anchor {
-    height: 120px;
+    height: 114px;
+    width: 155px;
+    right: -10%;
   }
   .title {
     font-size: 20px;

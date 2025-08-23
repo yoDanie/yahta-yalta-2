@@ -25,7 +25,6 @@ export const IntroWrapper = ({
         <RopeDivider />
         {bgImage}
         <Image
-          priority
           className={cn(
             styles.anchor,
             isBottomElementVisible && styles.animated,

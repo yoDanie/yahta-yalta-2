@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button"
 import styles from "./intro.module.scss"
 import { IntroWrapper } from "./IntroWrapper"
-import bgImage from "./images/omega-3.jpg"
-// import bgImage from "./images/alix-greenman-mob.jpg"
+import bgImage from "./intro-1.jpg"
 import { Image } from "@/components/Image"
 import { BookingPopover } from "@/components/BookingPopover/BookingPopover"
 
