@@ -1,24 +1,30 @@
 .root {
-  background: linear-gradient(
-    to bottom,
-    var(--color-darkblue),
-    var(--color-darkblue3)
-  );
   width: 100%;
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: hsla(215, 30%, 2%, 0.8);
-    z-index: 10;
+  background: var(--color-darkblue);
+
+  @media (min-width: 640px) {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: hsla(215, 30%, 2%, 0.8);
+      z-index: 10;
+    }
   }
 }
 
 .bgImage {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
+
+  @media (min-width: 640px) {
+    & {
+      display: block;
+    }
+  }
 }
 
 .cards {
@@ -67,7 +73,7 @@
       transform: none;
     }
   }
-  @media (hover: hover) and (pointer: fine) {
+  @media (max-width: 770px) {
     &:hover {
       transform: scale(1.3);
     }
