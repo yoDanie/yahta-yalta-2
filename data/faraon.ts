@@ -2,7 +2,7 @@ export const faraon: BoatData = {
   name: "faraon",
   slug: "Фараон",
   type: "motor",
-  price: 10000,
+  price: 8000,
   capacity: 8,
   length: 8,
   cabins: 1,

@@ -19,7 +19,7 @@ export const karolina: BoatData = {
 
 6-8 человек располагаются с комфортом. Максимально: 10 человек.
 `,
-  price: 10000,
+  price: 12000,
   capacity: 8,
   length: 14,
   cabins: 4,

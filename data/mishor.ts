@@ -8,6 +8,6 @@ export const mishor: BoatData = {
 
 5-6 человек располагаются с комфортом. Максимально: 10 человек.
 `,
-  price: 7500,
+  price: 8000,
   capacity: 10,
 }

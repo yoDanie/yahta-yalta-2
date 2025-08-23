@@ -1,7 +1,7 @@
 export const barcelona: BoatData = {
   slug: "барселона",
   type: "sailing",
-  price: 12000,
+  price: 11000,
   name: "barcelona",
   capacity: 8,
   length: 13,

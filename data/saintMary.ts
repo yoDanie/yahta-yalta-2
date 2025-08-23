@@ -3,7 +3,7 @@ export const saintMary: BoatData = {
   slug: "Святая Мария",
   type: "sailing",
 
-  price: 12000,
+  price: 15000,
   capacity: 14,
   length: 25,
   sleeps: 12,

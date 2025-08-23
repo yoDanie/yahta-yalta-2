@@ -4,7 +4,7 @@ export const alexandra: BoatData = {
   length: 14.5,
   model: "taurus 47",
   name: "alexandra",
-  price: 9000,
+  price: 10000,
   sleeps: 8,
   slug: "АлександрА",
   type: "sailing",

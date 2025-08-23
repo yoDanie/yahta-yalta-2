@@ -3,7 +3,7 @@ export const ibiza: BoatData = {
   slug: "Ибица",
   type: "sailing",
   model: "Бавария 47",
-  price: 12000,
+  price: 14000,
   capacity: 10,
   length: 14.5,
   cabins: 4,

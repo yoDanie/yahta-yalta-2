@@ -12,7 +12,7 @@ export const monika: BoatData = {
 
 6-8 человек располагаются с комфортом. Максимально: 10 человек.
 `,
-  price: 12000,
+  price: 14000,
   capacity: 10,
   length: 14.5,
   width: 4,

@@ -14,7 +14,7 @@ export const omega: BoatData = {
 
 Ждём вас для отличного времяпровождения на катамаране ОМЕГА ⛵️
 `,
-  price: 12000,
+  price: 13000,
   capacity: 10,
   length: 11,
   cabins: 3,
